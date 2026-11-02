@@ -8,10 +8,13 @@ importers:
 
   .:
     dependencies:
-      '@fontsource/outfit':
+      '@fontsource-variable/archivo':
         specifier: 5.2.5
         version: 5.2.5
-      '@fontsource/roboto':
+      '@fontsource-variable/manrope':
+        specifier: 5.2.5
+        version: 5.2.5
+      '@fontsource/ibm-plex-mono':
         specifier: 5.2.5
         version: 5.2.5
       next:
@@ -56,11 +59,14 @@ packages:
   '@emnapi/runtime@1.11.3':
     resolution: {integrity: sha512-Xz4Tpyki7XyrpbUK1jR1AhdAdaXyhhY4lZ3neLodmhpuWfy2PAQN5B46sAiU4liOXGLkHypn/qU+jvfWSCYYLA==}
 
-  '@fontsource/outfit@5.2.5':
-    resolution: {integrity: sha512-MoQRZDQ8nKOYxJXJNXzcDaBfw+k6IQ0+O/fQaBh5zJRb1/n7JNqxnc7iLK46YlMaFEGh8rjjF0Pp6o8Qc8JSJw==}
+  '@fontsource-variable/archivo@5.2.5':
+    resolution: {integrity: sha512-4zmMu6xCPNNMrIiUxYyXNuUp8Ay2pkUUcsz611vMCQGkIA933KOWhRtexEGn4slAwlL+vC1V68xDU+FGxucF1A==}
 
-  '@fontsource/roboto@5.2.5':
-    resolution: {integrity: sha512-70r2UZ0raqLn5W+sPeKhqlf8wGvUXFWlofaDlcbt/S3d06+17gXKr3VNqDODB0I1ASme3dGT5OJj9NABt7OTZQ==}
+  '@fontsource-variable/manrope@5.2.5':
+    resolution: {integrity: sha512-6Mo3ldtgAhxvSSyy+bLbFRjkiYhVo6RLcasJfj9Du5k2nX16/RwjQdBbZJfvsofVt6GqQ+O6AVkazmS3Xw5R9A==}
+
+  '@fontsource/ibm-plex-mono@5.2.5':
+    resolution: {integrity: sha512-G09N3GfuT9qj3Ax2FDZvKqZttzM3v+cco2l8uXamhKyXLdmlaUDH5o88/C3vtTHj2oT7yRKsvxz9F+BXbWKMYA==}
 
   '@img/colour@1.1.0':
     resolution: {integrity: sha512-Td76q7j57o/tLVdgS746cYARfSyxk8iEfRxewL9h4OMzYhbW4TAcppl0mT4eyqXddh6L/jwoM75mo7ixa/pCeQ==}
@@ -629,9 +635,11 @@ snapshots:
       tslib: 2.9.1
     optional: true
 
-  '@fontsource/outfit@5.2.5': {}
+  '@fontsource-variable/archivo@5.2.5': {}
 
-  '@fontsource/roboto@5.2.5': {}
+  '@fontsource-variable/manrope@5.2.5': {}
+
+  '@fontsource/ibm-plex-mono@5.2.5': {}
 
   '@img/colour@1.1.0':
     optional: true

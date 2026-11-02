@@ -36,7 +36,7 @@ export default function SafetyPage() {
         </div>
       </section>
 
-      <section className="mt-24 px-3 sm:px-5">
+      <section className="mt-24 edge">
         <div className="grid items-center gap-10 overflow-hidden rounded-[var(--radius-panel)] bg-night p-6 text-white sm:p-12 lg:grid-cols-2 lg:rounded-[40px]">
           <div>
             <p className="text-[13px] uppercase text-white/70">— {L.certifications} —</p>

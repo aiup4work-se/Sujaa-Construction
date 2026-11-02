@@ -31,7 +31,15 @@
 }
 
 /* Layout */
-@utility shell { @apply mx-auto w-full max-w-[1880px] px-5 sm:px-9 lg:px-[60px]; }
+/* Page margins
+ * --edge  gap between the screen edge and coloured panels/bands
+ * --inset gap between the screen edge and normal page content     */
+:root { --edge: 12px; --inset: 20px; }
+@media (min-width: 640px) { :root { --edge: clamp(20px, 3.4vw, 64px); --inset: calc(var(--edge) + 24px); } }
+@media (min-width: 1024px) { :root { --inset: calc(var(--edge) + 44px); } }
+
+@utility edge { margin-inline: auto; width: 100%; max-width: 1760px; padding-inline: var(--edge); }
+@utility shell { margin-inline: auto; width: 100%; max-width: 1760px; padding-inline: var(--inset); }
 @utility label { @apply text-[13px] uppercase tracking-[0.02em] text-mute; }
 
 /* Headings: scaled from the 1280px design */
@@ -43,8 +51,11 @@
 @keyframes spin-slow { to { transform: rotate(360deg); } }
 .spin-slow { animation: spin-slow 22s linear infinite; }
 
-.no-scrollbar { scrollbar-width: none; }
-.no-scrollbar::-webkit-scrollbar { display: none; }
+@utility no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar { display: none; }
+}
 
 /* ───────── Home hero: 2×2 grid + round cut-out for the badge ─────────
  * --g  gap between panels
@@ -76,4 +87,43 @@
     left: calc(50% - var(--b) / 2);
     top: calc(100% - var(--bh) - var(--g) / 2 - var(--b) / 2);
   }
+}
+
+/* ───────────────────────────── Motion ─────────────────────────────
+ * [data-reveal]  fades & rises in when scrolled into view (set --d for a stagger step)
+ * Content is only hidden once JavaScript has started (html.js), so the page is
+ * never blank without JS, and everything is static for "reduce motion" users.  */
+:root { --ease-out: cubic-bezier(0.16, 1, 0.3, 1); }
+
+html.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+  transition-delay: calc(var(--d, 0) * 90ms);
+}
+html.js [data-reveal="fade"] { transform: none; }
+html.js [data-reveal="scale"] { transform: scale(0.96); }
+html.js [data-reveal="left"] { transform: translateX(-40px); }
+html.js [data-reveal].is-in { opacity: 1; transform: none; }
+
+/* Hero entrance */
+@keyframes rise-in { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
+@keyframes pop-in { from { opacity: 0; transform: scale(0.6) rotate(-30deg); } to { opacity: 1; transform: none; } }
+@keyframes ken-burns { from { transform: scale(1.12); } to { transform: scale(1); } }
+@keyframes line-up { from { opacity: 0; transform: translateY(105%); } to { opacity: 1; transform: none; } }
+
+.anim-rise { animation: rise-in 1s var(--ease-out) both; animation-delay: calc(var(--d, 0) * 120ms); }
+.anim-pop { animation: pop-in 1.1s var(--ease-out) 0.55s both; }
+.anim-ken > * { animation: ken-burns 2.4s var(--ease-out) both; }
+.anim-lines > span { display: block; overflow: hidden; padding-bottom: 0.06em; }
+.anim-lines > span > span { display: block; animation: line-up 1s var(--ease-out) both; animation-delay: calc(0.25s + var(--i, 0) * 110ms); }
+
+/* Cards & buttons */
+.lift { transition: transform 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out); }
+.lift:hover { transform: translateY(-6px); box-shadow: 0 24px 50px -24px rgba(0, 0, 0, 0.35); }
+
+@media (prefers-reduced-motion: reduce) {
+  html.js [data-reveal] { opacity: 1; transform: none; transition: none; }
+  .anim-rise, .anim-pop, .anim-ken > *, .anim-lines > span > span { animation: none; }
+  .lift:hover { transform: none; }
 }

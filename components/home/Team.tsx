@@ -14,10 +14,10 @@ export default function Team() {
       intro={home.team.text}
     >
       {leadership.map((p, i) => (
-        <article key={p.name} className="relative w-[70%] shrink-0 snap-start sm:w-[calc((100%-40px)/3)] lg:w-[calc((100%-60px)/4)]">
+        <article key={p.name} data-reveal style={{ "--d": i } as React.CSSProperties} className="group relative w-[70%] shrink-0 snap-start sm:w-[calc((100%-40px)/3)] lg:w-[calc((100%-60px)/4)]">
           {/* Yellow card with the cut-out corner */}
           <div className="relative aspect-[286/300] overflow-hidden rounded-[22px] bg-sun">
-            <Portrait src={p.photo} alt={p.name} seed={i} className={p.photo ? "absolute inset-0" : "absolute inset-x-0 bottom-0 top-[6%]"} />
+            <Portrait src={p.photo} alt={p.name} seed={i} className={`transition-transform duration-700 group-hover:scale-[1.05] ${p.photo ? "absolute inset-0" : "absolute inset-x-0 bottom-0 top-[6%]"}`} />
             <div className="glass absolute inset-x-3.5 bottom-3.5 rounded-[12px] bg-black/15 px-4 py-2.5 text-white">
               <p className="text-[14px] uppercase tracking-[0.01em]">{p.name}</p>
               <p className="text-[12px] text-white/80">{p.role}</p>

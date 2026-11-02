@@ -5,7 +5,7 @@ export default function About() {
   const a = home.about;
   return (
     <section className="shell pt-24 lg:pt-[100px]">
-      <div className="grid gap-6 lg:grid-cols-[236px_1fr]">
+      <div data-reveal className="grid gap-6 lg:grid-cols-[236px_1fr]">
         <SectionLabel>{a.label}</SectionLabel>
         <div className="max-w-[1180px]">
           <p className="text-[26px] leading-[1.3] tracking-[-0.015em] text-night sm:text-[32px] lg:text-[clamp(38px,2.6vw,50px)]">{a.statement}</p>

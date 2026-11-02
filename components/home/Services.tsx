@@ -20,7 +20,7 @@ export default function Services() {
   const right = items[active];
 
   return (
-    <section className="mt-24 px-3 sm:px-5 lg:mt-[100px]">
+    <section className="mt-24 edge lg:mt-[100px]">
       <div
         ref={box}
         className="relative overflow-hidden rounded-[var(--radius-panel)] bg-night px-5 py-16 lg:rounded-[40px] lg:py-[92px]"
@@ -30,7 +30,7 @@ export default function Services() {
         }}
         onMouseLeave={() => setCursor(null)}
       >
-        <div className="flex justify-center"><SectionLabel light>{cfg.label}</SectionLabel></div>
+        <div data-reveal className="flex justify-center"><SectionLabel light>{cfg.label}</SectionLabel></div>
 
         {/* Floating tilted photos (desktop) */}
         <div className="pointer-events-none absolute left-[6%] top-[47%] hidden w-[250px] -rotate-[9deg] opacity-90 transition-all duration-500 lg:block" aria-hidden="true">
@@ -45,7 +45,7 @@ export default function Services() {
             const dist = Math.abs(i - active);
             const tone = dist === 0 ? "text-white" : dist === 1 ? "text-white/60" : "text-white/35";
             return (
-              <li key={s.slug}>
+              <li key={s.slug} data-reveal style={{ "--d": i } as React.CSSProperties}>
                 <Link
                   href={`/services/${s.slug}`}
                   onMouseEnter={() => setActive(i)}

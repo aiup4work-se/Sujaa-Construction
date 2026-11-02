@@ -18,15 +18,15 @@ export default function Carousel({ label, title, intro, children, itemClass }: {
 
   return (
     <section className="shell pt-24 lg:pt-[120px]">
-      <SectionLabel>{label}</SectionLabel>
-      <div className="mt-5 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+      <div data-reveal><SectionLabel>{label}</SectionLabel></div>
+      <div data-reveal style={{ "--d": 1 } as React.CSSProperties} className="mt-5 flex flex-col justify-between gap-6 md:flex-row md:items-end">
         <div className="max-w-[920px]">
           <h2 className="h-section">{title}</h2>
           <p className="mt-4 max-w-[560px] text-[15px] leading-[1.65] text-mute">{intro}</p>
         </div>
         <NavArrows onPrev={() => scroll(-1)} onNext={() => scroll(1)} />
       </div>
-      <div ref={track} className={`no-scrollbar -mx-5 mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 sm:-mx-9 sm:px-9 lg:-mx-[60px] lg:px-[60px] ${itemClass ?? ""}`}>
+      <div ref={track} className={`no-scrollbar mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto rounded-[22px] ${itemClass ?? ""}`}>
         {children}
       </div>
     </section>

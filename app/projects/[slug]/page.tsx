@@ -40,7 +40,7 @@ export default async function ProjectPage({ params }: Params) {
 
   return (
     <>
-      <section className="mx-auto  px-3 pt-3 sm:px-5 sm:pt-5">
+      <section className="edge pt-3 sm:pt-5">
         <div className="relative min-h-[560px] overflow-hidden rounded-[var(--radius-panel)] lg:min-h-[640px]">
           <Photo src={p.image} alt={p.name} scene={scene} priority className="absolute inset-0" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />

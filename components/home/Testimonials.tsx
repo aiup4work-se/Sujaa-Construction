@@ -16,11 +16,11 @@ export default function Testimonials() {
   const go = (d: number) => setI((v) => (v + d + testimonials.length) % testimonials.length);
 
   return (
-    <section className="mt-24 px-3 sm:px-5 lg:mt-[120px]">
+    <section className="mt-24 edge lg:mt-[120px]">
       <div className="rounded-[var(--radius-panel)] bg-night px-5 py-14 text-white sm:px-9 lg:rounded-[40px] lg:px-10 lg:py-[92px]">
         <div className="mx-auto max-w-[1840px]">
-          <SectionLabel light>{home.testimonials.label}</SectionLabel>
-          <div className="mt-5 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div data-reveal><SectionLabel light>{home.testimonials.label}</SectionLabel></div>
+          <div data-reveal style={{ "--d": 1 } as React.CSSProperties} className="mt-5 flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div className="max-w-[760px]">
               <h2 className="h-section"><Lines text={home.testimonials.title} /></h2>
               <p className="mt-4 text-[15px] leading-[1.65] text-white/75">{home.testimonials.text}</p>
@@ -28,7 +28,7 @@ export default function Testimonials() {
             <NavArrows dark onPrev={() => go(-1)} onNext={() => go(1)} />
           </div>
 
-          <div className="mt-12 grid items-center gap-10 lg:grid-cols-[414px_1fr] lg:gap-[70px]" aria-live="polite">
+          <div data-reveal style={{ "--d": 2 } as React.CSSProperties} className="mt-12 grid items-center gap-10 lg:grid-cols-[414px_1fr] lg:gap-[70px]" aria-live="polite">
             <div className="relative aspect-[414/550] max-h-[560px] w-full max-w-[414px] overflow-hidden rounded-[22px] bg-[#e9eaec]">
               {t.photo || !proj ? (
                 <Portrait src={t.photo} alt={t.name} seed={i + 1} className={t.photo ? "absolute inset-0" : "absolute inset-x-0 bottom-0 top-[8%]"} />
@@ -42,7 +42,7 @@ export default function Testimonials() {
               </div>
             </div>
 
-            <figure className="relative">
+            <figure key={i} className="anim-rise relative">
               <QuoteMark className="h-7 w-11 text-white" />
               <blockquote className="mt-6 text-[26px] leading-[1.5] tracking-[-0.01em] sm:text-[34px] lg:text-[clamp(40px,2.6vw,52px)]">
                 {t.quote}

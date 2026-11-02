@@ -10,8 +10,8 @@ export default function Faq() {
   const [open, setOpen] = useState(0);
   return (
     <section className="shell pt-24 lg:pt-[100px]">
-      <SectionLabel>{home.faq.label}</SectionLabel>
-      <div className="mt-5 flex flex-col justify-between gap-5 md:flex-row md:items-start">
+      <div data-reveal><SectionLabel>{home.faq.label}</SectionLabel></div>
+      <div data-reveal style={{ "--d": 1 } as React.CSSProperties} className="mt-5 flex flex-col justify-between gap-5 md:flex-row md:items-start">
         <h2 className="h-section"><Lines text={home.faq.title} /></h2>
         <p className="max-w-[320px] text-[15px] leading-[1.6] text-mute md:mt-2">{home.faq.text}</p>
       </div>
@@ -20,7 +20,7 @@ export default function Faq() {
         {faqs.map((f, i) => {
           const isOpen = open === i;
           return (
-            <li key={f.q} className={i < faqs.length - 1 ? "border-b border-rule" : ""}>
+            <li key={f.q} data-reveal style={{ "--d": i } as React.CSSProperties} className={i < faqs.length - 1 ? "border-b border-rule" : ""}>
               <button
                 className="flex w-full items-center justify-between gap-6 py-6 text-left"
                 aria-expanded={isOpen}

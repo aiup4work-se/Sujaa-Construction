@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { RevealObserver } from "@/components/Motion";
 import { brand, seo } from "@/site.config";
 // Fonts bundled from npm (no Google Fonts request at build time)
 import "@fontsource/roboto/300.css";
@@ -28,14 +29,17 @@ const themeCss = `:root{
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <style dangerouslySetInnerHTML={{ __html: themeCss }} />
+        {/* Lets the CSS hide reveal-on-scroll content only when JavaScript is running */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
       </head>
       <body className="font-sans">
         <Header />
         <main>{children}</main>
         <Footer />
+        <RevealObserver />
       </body>
     </html>
   );

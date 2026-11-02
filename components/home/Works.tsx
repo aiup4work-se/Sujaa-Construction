@@ -12,8 +12,8 @@ export default function Works() {
       title={<Lines text={home.works.title} desktopOnly />}
       intro={home.works.text}
     >
-      {projects.map((p) => (
-        <Link key={p.slug} href={`/projects/${p.slug}`}
+      {projects.map((p, i) => (
+        <Link key={p.slug} href={`/projects/${p.slug}`} data-reveal style={{ "--d": Math.min(i, 3) } as React.CSSProperties}
           className="group relative block aspect-[390/480] w-[82%] shrink-0 snap-start overflow-hidden rounded-[22px] sm:w-[calc((100%-20px)/2)] lg:w-[calc((100%-40px)/3)]">
           <Photo src={p.image} alt={p.name} scene={sceneFor[p.category]} className="absolute inset-0 transition-transform duration-700 group-hover:scale-[1.04]" sizes="(max-width:768px) 85vw, 33vw" />
           <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/40 to-transparent" />

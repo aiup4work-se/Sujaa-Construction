@@ -21,7 +21,7 @@ export default function Footer() {
           <p className="max-w-[340px] text-[15px] leading-relaxed text-white/70">{footer.intro}</p>
         </div>
 
-        <div className="mt-10 flex flex-col justify-between gap-10 lg:flex-row lg:items-end">
+        <div data-reveal className="mt-10 flex flex-col justify-between gap-10 lg:flex-row lg:items-end">
           <p className="max-w-[640px] text-[40px] leading-[1.12] tracking-[-0.02em] sm:text-[52px] lg:text-[60px]">{footer.tagline}</p>
           <Newsletter />
         </div>

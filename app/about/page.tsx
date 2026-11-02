@@ -65,7 +65,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="mt-24 px-3 sm:px-5 lg:mt-[120px]">
+      <section className="mt-24 edge lg:mt-[120px]">
         <div className="rounded-[var(--radius-panel)] bg-night px-6 py-14 text-white sm:px-12 lg:rounded-[40px] lg:py-20">
           <p className="text-[13px] uppercase text-white/70">— {L.whatWeStandFor} —</p>
           <h2 className="h-section mt-5">{a.valuesTitle}</h2>

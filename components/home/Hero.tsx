@@ -3,7 +3,7 @@ import Photo from "@/components/Photo";
 import { PillLink } from "@/components/Buttons";
 import { site } from "@/data/site";
 import { home, contact } from "@/site.config";
-import Lines from "@/components/Lines";
+import { CountUp } from "@/components/Motion";
 
 // All text and photos come from site.config.ts → home.hero
 const hero = home.hero;
@@ -21,10 +21,10 @@ const hero = home.hero;
  */
 export default function Hero() {
   return (
-    <section className="px-3 pt-3 sm:px-5 sm:pt-5">
+    <section className="edge pt-3 sm:pt-5">
       <div className="hero-grid relative">
         {/* Top-left: video thumbnail + headline */}
-        <div className="hero-tl flex flex-col justify-between rounded-[var(--radius-panel)] bg-sun px-6 pb-8 pt-[104px] sm:px-10 md:pb-[clamp(28px,4vh,48px)] md:pt-[clamp(110px,15vh,150px)]">
+        <div style={{ "--d": 0 } as React.CSSProperties} className="hero-tl anim-rise flex flex-col justify-between rounded-[var(--radius-panel)] bg-sun px-6 pb-8 pt-[104px] sm:px-10 md:pb-[clamp(28px,4vh,48px)] md:pt-[clamp(110px,15vh,150px)]">
           <Link href={contact.videoUrl} target="_blank" rel="noopener noreferrer"
             className="group relative block aspect-[2/1] w-full max-w-[400px] self-start overflow-hidden rounded-[18px] md:h-[clamp(96px,19vh,200px)] md:w-auto md:max-w-none"
             aria-label="Watch our company video">
@@ -35,13 +35,15 @@ export default function Hero() {
               </span>
             </span>
           </Link>
-          <h1 className="mt-8 text-[44px] leading-[1.08] tracking-[-0.03em] text-night md:text-[clamp(44px,min(4.6vw,8vh),84px)]">
-            <Lines text={hero.title} />
+          <h1 className="anim-lines mt-8 text-[44px] leading-[1.08] tracking-[-0.03em] text-night md:text-[clamp(44px,min(4.6vw,8vh),84px)]">
+            {hero.title.split("\n").map((line, i) => (
+              <span key={i}><span style={{ "--i": i } as React.CSSProperties}>{line}</span></span>
+            ))}
           </h1>
         </div>
 
         {/* Bottom-left: intro + buttons */}
-        <div className="hero-bl flex flex-col justify-center rounded-[var(--radius-panel)] bg-sun px-6 py-8 sm:px-10 md:pr-[150px]">
+        <div style={{ "--d": 2 } as React.CSSProperties} className="hero-bl anim-rise flex flex-col justify-center rounded-[var(--radius-panel)] bg-sun px-6 py-8 sm:px-10 md:pr-[150px]">
           <p className="max-w-[500px] text-[15px] leading-[1.6] text-night/80 md:text-[clamp(14px,1.05vw,17px)]">{hero.text}</p>
           <div className="mt-[clamp(16px,2.6vh,28px)] flex flex-wrap gap-3">
             <PillLink href={hero.primaryButton.href}>{hero.primaryButton.label}</PillLink>
@@ -54,14 +56,16 @@ export default function Hero() {
         </div>
 
         {/* Right: photo with stats */}
-        <div className="hero-r relative min-h-[440px] overflow-hidden rounded-[var(--radius-panel)] md:min-h-0">
-          <Photo src={hero.photo} alt="Tower crane on one of our sites" scene="crane" priority className="absolute inset-0" sizes="(max-width:768px) 100vw, 50vw" />
+        <div style={{ "--d": 1 } as React.CSSProperties} className="hero-r anim-rise relative min-h-[440px] overflow-hidden rounded-[var(--radius-panel)] md:min-h-0">
+          <div className="anim-ken absolute inset-0">
+            <Photo src={hero.photo} alt="Tower crane on one of our sites" scene="crane" priority className="absolute inset-0" sizes="(max-width:768px) 100vw, 50vw" />
+          </div>
           <div className="absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-t from-black/65 via-black/25 to-transparent" />
           <dl className="absolute inset-x-0 bottom-0 grid grid-cols-3 gap-4 px-6 pb-[clamp(24px,4vh,44px)] text-white sm:px-10 md:pl-[150px] md:pr-12">
             {site.heroStats.map((s) => (
               <div key={s.label} className="flex flex-col-reverse">
                 <dt className="mt-2 text-[12px] text-white/80 md:text-[clamp(12px,0.95vw,15px)]">{s.label}</dt>
-                <dd className="text-[30px] leading-none tracking-[-0.02em] md:text-[clamp(32px,3vw,52px)]">{s.value}</dd>
+                <dd className="text-[30px] leading-none tracking-[-0.02em] md:text-[clamp(32px,3vw,52px)]"><CountUp value={s.value} /></dd>
               </div>
             ))}
           </dl>
@@ -78,7 +82,7 @@ function Badge() {
   const r = 72;
   const circumference = Math.round(2 * Math.PI * r);
   return (
-    <div className="hero-badge pointer-events-none absolute hidden md:block" aria-hidden="true">
+    <div className="hero-badge anim-pop pointer-events-none absolute hidden md:block" aria-hidden="true">
       <div className="relative h-full w-full rounded-full bg-sun">
         <svg viewBox="0 0 200 200" className="spin-slow absolute inset-0 h-full w-full">
           <defs>

@@ -28,7 +28,7 @@ export default async function ArticlePage({ params }: Params) {
 
   return (
     <>
-      <section className="mx-auto  px-3 pt-3 sm:px-5 sm:pt-5">
+      <section className="edge pt-3 sm:pt-5">
         <div className="rounded-[var(--radius-panel)] bg-sun px-6 pb-12 pt-[120px] sm:px-12 md:pt-[150px]">
           <div className="mx-auto max-w-[820px]">
             <Link href="/news" className="inline-flex items-center gap-2 text-[14px] text-night/70 hover:text-night"><Arrow dir="w" /> {L.allNews}</Link>

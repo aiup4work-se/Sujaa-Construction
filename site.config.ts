@@ -20,10 +20,10 @@ import { pexels } from "./lib/pexels";
 
 /* ═══════════════════════════ 0. QUICK SETUP ═══════════════════════════════
  * Change these first — they are reused all through this file.             */
-const COMPANY = "Sujaa Constructions";   // full company name
-const SHORT = "SJC";                    // short name next to the logo
+const COMPANY = "Sujaa Constructions";     // full company name
+const SHORT = "SJC";                       // short name next to the logo
 const LEGAL_SUFFIX = "(Pvt) Ltd";
-const DOMAIN = "sujaa-constructions.lk";               // your website domain (no www)
+const DOMAIN = "sujaa-constructions.lk";   // your website domain (no www)
 const FOUNDED = 1958;                      // year founded
 const COUNTRY = "Sri Lanka";
 const YEARS = new Date().getFullYear() - FOUNDED;   // years in business (automatic)
@@ -113,7 +113,7 @@ export const contact = {
   tendersEmail: `tenders@${DOMAIN}`,
   careersEmail: `careers@${DOMAIN}`,
   whatsapp: "+94 77 000 0000",
-  hours: "Mon – Fri, 8.30 am – 5.00 pm",
+  hours: "Mon – Fri 8.00 am – 5.30 pm · Sat 8.00 am – 1.00 pm",
   mapUrl: "https://maps.google.com/?q=Colombo+02+Sri+Lanka",
   videoUrl: "https://www.youtube.com/",      // "Watch Video" button on the home page
 };
@@ -138,6 +138,7 @@ export const certifications = [
   { title: "ISO 9001:2015", text: "Quality management system" },
   { title: "ISO 14001:2015", text: "Environmental management system" },
   { title: "ISO 45001:2018", text: "Occupational health & safety" },
+  { title: "NCASL Member", text: "National Construction Association of Sri Lanka" },
 ];
 
 /* ──────────────────────────── 5. MENUS ──────────────────────────────────── */
@@ -168,9 +169,10 @@ export const nav = {
 export const home = {
   hero: {
     title: "Building Tomorrow\nwith Vision",
-    text: "We build iconic infrastructure that transforms city skylines, strengthens communities, boosts economic growth, and leaves a lasting mark of innovation across Sri Lanka.",
-    primaryButton: { label: "Get Started", href: "/contact" },
+    text: `From high-rise buildings and expressways to bridges, piling and water schemes, we deliver ${COUNTRY}'s essential infrastructure on time, on budget and to the highest safety standards.`,
+    primaryButton: { label: "Request a Quote", href: "/contact" },
     videoButtonLabel: "Watch Video",
+    contactLine: "Free site visit · Reply within 1 working day",   // small line under the buttons ("" to hide)
     photo: stock.heroCrane,        // big photo on the right
     videoThumb: stock.heroTeam,    // small photo above the headline
     badgeText: "Every single day • Engineering strength • Elevating skylines • ",
@@ -183,9 +185,34 @@ export const home = {
   about: {
     label: "About Us",
     statement:
-      "Bringing your vision to life. We transform bold ideas into durable and eco-conscious structures, guided by decades of experience and a relentless commitment to precision in every detail of construction.",
-    text: "We combine innovation, craftsmanship, and technical excellence to deliver projects that not only meet expectations — but redefine them. Our team is dedicated to building with purpose, precision, and lasting value.",
+      `Bringing your vision to life. For over ${YEARS} years we have turned drawings into durable, well-engineered structures for government, corporate and private clients across ${COUNTRY}.`,
+    text: "As a CIDA-graded main contractor with our own engineers, plant and piling rigs, we take responsibility for the whole job — from design coordination and approvals to construction, testing and handover. Our clients come back because we finish what we promise.",
     button: { label: "Get Started", href: "/about" },
+  },
+  whyUs: {
+    label: "Why Choose Us",
+    title: "Built on trust,\ndelivered with precision",
+    text: "Clients choose us for the same reasons they come back: we plan carefully, build safely and hand over on the date we agreed.",
+    // ⚠️ Sample figures — replace with your company's real numbers
+    stats: [
+      { value: `${YEARS}+`, label: "Years in construction" },
+      { value: "200+", label: "Projects delivered" },
+      { value: "80+", label: "Clients served" },
+      { value: "900+", label: "Skilled workforce" },
+    ],
+    points: [
+      { figure: "3M+ safe man-hours", title: "Safety without compromise", text: "Every worker is inducted, equipped and supervised. Safety is planned into each stage, not added at the end." },
+      { figure: "95% on schedule", title: "On time, on budget", text: "Detailed programmes, weekly progress reports and stage-based payments keep you in control of time and cost." },
+      { figure: "70% repeat clients", title: "Clients who come back", text: "Most of our work comes from clients we have built for before — the clearest sign of trust we know." },
+      { figure: "In-house fleet", title: "Our own plant & machinery", text: "Cranes, piling rigs, excavators and batching plants we own and maintain, so work never waits for hire companies." },
+      { figure: "ISO 9001 · 14001 · 45001", title: "Certified systems", text: "Independently audited quality, environmental and safety management on every site." },
+      { figure: "150+ engineers", title: "Engineers on every site", text: "Chartered engineers, quantity surveyors and site managers lead each project from start to finish." },
+    ],
+  },
+  sectors: {
+    label: "Who We Serve",
+    // Shown as a moving band of names. Add or remove freely.
+    items: ["Government", "Semi-Government", "Corporate", "Industrial", "Hospitality & Resorts", "Real Estate", "International Clients", "Healthcare", "Education"],
   },
   services: {
     label: "What We Do",
@@ -223,8 +250,10 @@ export const home = {
 
 /* ───────────────────── 7. SHARED BLOCKS (all pages) ─────────────────────── */
 export const cta = {
-  title: "Have a project in mind?",
-  text: "Send us your drawings or tender documents and our estimating team will respond within two working days.",
+  eyebrow: "Start your project",
+  title: "Have a project\nin mind?",
+  phoneLabel: "Or call us directly",
+  text: "Send us your drawings, BOQ or tender documents. Our estimating team replies within one working day with next steps and a site-visit date.",
   button: { label: "Talk to our team", href: "/contact" },
 };
 
@@ -246,8 +275,8 @@ export const pages = {
       "Today we deliver high-rise buildings, highways, bridges, piling, water infrastructure and industrial facilities in Sri Lanka and overseas, supported by our own plant, piling rigs and engineering design team.",
     ],
     storyPhoto: stock.workersHardhats,
-    vision: "To be the most trusted construction partner in South Asia.",
-    mission: "To deliver safe, high-quality projects on time, creating lasting value for clients, people and communities.",
+    vision: `To be ${COUNTRY}'s most trusted construction partner — known for quality, safety and keeping our word.`,
+    mission: "To deliver every project safely, on time and within budget, using skilled people, sound engineering and responsible practices that add lasting value for clients and communities.",
     milestonesTitle: "Our journey",
     leadershipTitle: "The people leading our work",
     valuesTitle: "Our values",
@@ -280,9 +309,9 @@ export const pages = {
     howToApply: `Email your CV with the position title in the subject line to careers@${DOMAIN}.`,
   },
   contact: {
-    hero: { label: "Contact Us", title: "Let's build something lasting", text: "Send us your enquiry, tender invitation or project brief and we'll get back within two working days.", photo: stock.towerCrane },
+    hero: { label: "Contact Us", title: "Let's build something lasting", text: "Tell us about your project — our estimating team replies within one working day and site visits are free.", photo: stock.towerCrane },
     formTitle: "Send an enquiry",
-    enquiryTypes: ["New project / quotation", "Tender invitation", "Supplier / subcontractor registration", "Careers", "Other"],
+    enquiryTypes: ["Building construction", "Road construction", "Infrastructure / bridges", "Water & drainage", "Piling & foundations", "MEP engineering", "Renovation", "Plant & machinery hire", "Design & build", "Tender invitation", "Supplier / subcontractor registration", "Other"],
     thanksTitle: "Enquiry received",
     thanksText: "Thank you. A member of our team will contact you within two working days.",
   },
@@ -353,61 +382,51 @@ export const pages = {
 // `projectSectors` picks which projects appear on the service page.
 export const services = [
   {
-    slug: "high-rise-buildings",
-    title: "High-Rise & Commercial Buildings",
+    slug: "building-construction",
+    title: "Building Construction",
     short: "Building Construction",
-    summary: "Hotels, office towers, apartments and mixed-use developments delivered as main contractor.",
-    details: ["Design & build and traditional contracts", "Post-tensioned and transfer slabs", "Façade and MEP coordination", "Fit-out and handover"],
+    summary: "Residential, commercial, industrial and high-rise buildings, delivered with tight engineering control and quality finishes.",
+    details: ["High-rise apartments & offices", "Hotels, hospitals & schools", "Factories & warehouses", "Structure, finishes & handover"],
     photo: stock.highRiseLowAngle,
     scene: "city",
-    projectSectors: ["Buildings"],
+    projectSectors: ["Buildings", "Industrial"],
   },
   {
-    slug: "highways-roads",
-    title: "Highways & Roads",
-    short: "Highways & Roads",
-    summary: "Expressways, national and provincial roads, including earthworks, drainage and asphalt.",
-    details: ["Earthworks and embankments", "Asphalt and concrete paving", "Culverts and side drains", "Road furniture and marking"],
+    slug: "road-construction",
+    title: "Road Construction",
+    short: "Roads & Highways",
+    summary: "Expressways, highways, provincial and urban roads built to RDA and international specifications.",
+    details: ["Earthworks & embankments", "Asphalt & concrete paving", "Drainage & culverts", "Road furniture & marking"],
     photo: stock.asphaltPaver,
     scene: "road",
-    projectSectors: ["Highways"],
+    projectSectors: ["Roads"],
   },
   {
-    slug: "bridges-flyovers",
-    title: "Bridges & Flyovers",
-    short: "Bridges & Flyovers",
-    summary: "Steel and concrete bridges, flyovers and marine structures.",
-    details: ["Pre-stressed beam bridges", "Cast-in-situ and precast decks", "River and marine works", "Bridge rehabilitation"],
+    slug: "infrastructure",
+    title: "Infrastructure",
+    short: "Bridges & Infrastructure",
+    summary: "Bridges, flyovers, culverts, retaining walls and public works that keep communities connected.",
+    details: ["Bridges & flyovers", "Box culverts", "Retaining walls & slope protection", "Public & civic works"],
     photo: stock.bridgeBlueSky,
     scene: "bridge",
-    projectSectors: ["Bridges"],
+    projectSectors: ["Infrastructure"],
   },
   {
     slug: "piling-foundations",
     title: "Piling & Foundations",
     short: "Piling & Foundations",
-    summary: "Bored cast-in-situ piles, diaphragm walls and deep basements with our own rig fleet.",
-    details: ["Bored piles up to 2.0 m diameter", "Diaphragm and secant pile walls", "Pile load testing", "Dewatering and shoring"],
+    summary: "Bored, driven and micro piling with our own rig fleet, plus deep basements and ground improvement.",
+    details: ["Bored cast-in-situ piles", "Driven & micro piles", "Diaphragm & secant pile walls", "Pile load & integrity testing"],
     photo: stock.excavatorYellow,
     scene: "site",
-    projectSectors: ["Piling", "Bridges"],
+    projectSectors: ["Piling", "Infrastructure"],
   },
   {
-    slug: "industrial",
-    title: "Industrial & Warehousing",
-    short: "Industrial Projects",
-    summary: "Factories, warehouses and logistics facilities in BOI zones and industrial estates.",
-    details: ["Pre-engineered steel buildings", "Superflat industrial floors", "Cold storage", "Utilities and substations"],
-    photo: stock.warehouseEmpty,
-    scene: "warehouse",
-    projectSectors: ["Industrial"],
-  },
-  {
-    slug: "water-infrastructure",
-    title: "Water & Wastewater",
-    short: "Water Infrastructure",
-    summary: "Water-supply schemes, treatment plants, pipelines and drainage for public and private clients.",
-    details: ["Treatment plants", "Transmission pipelines", "Reservoirs and towers", "Storm-water systems"],
+    slug: "water-drainage",
+    title: "Water & Drainage",
+    short: "Water & Drainage",
+    summary: "Water-supply schemes, treatment plants, pipelines and storm-water drainage for public and private clients.",
+    details: ["Treatment plants", "Transmission & distribution mains", "Reservoirs & water towers", "Storm-water & sewerage"],
     photo: stock.waterPlant,
     scene: "water",
     projectSectors: ["Water"],
@@ -416,33 +435,54 @@ export const services = [
     slug: "mep",
     title: "MEP Engineering",
     short: "MEP Engineering",
-    summary: "Mechanical, electrical and plumbing installation and commissioning.",
-    details: ["HVAC", "Power distribution", "Fire protection", "Plumbing and drainage"],
+    summary: "Mechanical, electrical and plumbing systems designed and installed for performance and energy efficiency.",
+    details: ["HVAC & ventilation", "Power & lighting", "Fire protection", "Plumbing & drainage"],
     photo: stock.teamStanding,
     scene: "workers",
     projectSectors: ["Buildings", "Industrial"],
   },
   {
-    slug: "interiors",
-    title: "Interiors & Fit-Out",
-    short: "Interiors & Fit-Out",
-    summary: "Turnkey interiors for hotels, offices and residences.",
-    details: ["Joinery", "Ceilings and partitions", "Finishes", "Furniture installation"],
+    slug: "renovation",
+    title: "Renovation & Refurbishment",
+    short: "Renovation",
+    summary: "Extensions, structural repairs, waterproofing and complete refurbishments — often while the building stays in use.",
+    details: ["Structural assessment & repair", "Vertical & horizontal extensions", "Waterproofing", "Interior refits"],
     photo: stock.concreteInterior,
     scene: "tower",
     projectSectors: ["Buildings"],
+  },
+  {
+    slug: "plant-machinery",
+    title: "Plant & Machinery",
+    short: "Plant & Machinery",
+    summary: "A maintained fleet of cranes, piling rigs and earth-moving equipment, available with certified operators.",
+    details: ["Tower & mobile cranes", "Piling rigs", "Excavators, dozers & rollers", "Batching plants & transit mixers"],
+    photo: stock.excavator,
+    scene: "crane",
+    projectSectors: ["Roads", "Infrastructure"],
+  },
+  {
+    slug: "design-build",
+    title: "Design & Build",
+    short: "Design & Build",
+    summary: "One contract, one point of responsibility — from concept and approvals to construction and handover.",
+    details: ["Concept & detailed design", "Approvals (UDA, local authority)", "Value engineering", "Fixed-price delivery"],
+    photo: stock.teamTalking,
+    scene: "workers",
+    projectSectors: ["Buildings", "Industrial"],
   },
 ] as const satisfies readonly ServiceConfig[];
 
 /* ───────────────────────────── 10. PROJECTS ─────────────────────────────── */
 /** Sectors used for the project filter. Add or rename freely; each project's `sector` must be one of these. */
-export const projectSectors = ["Buildings", "Highways", "Bridges", "Piling", "Industrial", "Water"] as const;
+export const projectSectors = ["Buildings", "Roads", "Infrastructure", "Piling", "Industrial", "Water"] as const;
 
 /** Drawn fallback per sector (if a photo can't load). */
 export const sectorScene: Record<(typeof projectSectors)[number], SceneName> = {
-  Buildings: "site", Highways: "road", Bridges: "bridge", Piling: "crane", Industrial: "warehouse", Water: "water",
+  Buildings: "site", Roads: "road", Infrastructure: "bridge", Piling: "crane", Industrial: "warehouse", Water: "water",
 };
 
+// ⚠️ SAMPLE PROJECTS — replace with your own completed and ongoing work.
 // featured: true → appears in the home page carousel and on top of /projects.
 export const projects: ProjectConfig[] = [
   {
@@ -469,7 +509,7 @@ export const projects: ProjectConfig[] = [
     name: "Southern Link Expressway – Section 2",
     client: "Road Development Authority",
     location: "Matara District",
-    sector: "Highways",
+    sector: "Roads",
     status: "Ongoing",
     year: "2026",
     value: "LKR 12.2 bn",
@@ -488,7 +528,7 @@ export const projects: ProjectConfig[] = [
     name: "Kelani River Bridge",
     client: "Ministry of Highways",
     location: "Kaduwela",
-    sector: "Bridges",
+    sector: "Infrastructure",
     status: "Completed",
     year: "2023",
     value: "LKR 4.1 bn",
@@ -634,6 +674,8 @@ export const faqs = [
   { q: "Are your projects delivered on time and within budget?", a: "Every project has a baseline programme and cost plan that we report against weekly. Over 95% of our projects in the last five years finished on or before programme." },
   { q: "Do you handle permits and compliance?", a: "Yes. We prepare and follow up UDA, local-authority, CEA and fire approvals, and work to CIDA, ICTAD specifications and ISO standards." },
   { q: "Can I customize my project design?", a: "Yes. Our design & build team works with your architect, or designs from scratch, and adjusts specifications to suit your budget." },
+  { q: "Do you work outside Colombo?", a: "Yes. We work island-wide and have delivered projects overseas. Our own plant fleet lets us mobilise quickly to remote sites." },
+  { q: "Can I hire your machinery?", a: "Yes. Cranes, piling rigs and earth-moving plant are available for hire with certified operators. Ask for availability through the contact form." },
 ];
 
 /* ──────────────────────────── 13. NEWS ──────────────────────────────────── */

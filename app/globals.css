@@ -124,9 +124,10 @@
     --r: clamp(84px, 7.4vw, 112px);
     --b: calc(var(--r) * 2 - 28px);
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr var(--bh);
+    /* panels grow if their text needs more room, instead of overflowing */
+    grid-template-rows: minmax(min-content, 1fr) minmax(var(--bh), auto);
     gap: var(--g);
-    height: clamp(620px, calc(100svh - 40px), 1080px);
+    min-height: clamp(620px, calc(100svh - 40px), 1080px);
   }
   .hero-tl, .hero-bl, .hero-r {
     --cut: radial-gradient(circle var(--r) at var(--cx) var(--cy), #0000 calc(var(--r) - 0.5px), #000 calc(var(--r) + 0.5px));

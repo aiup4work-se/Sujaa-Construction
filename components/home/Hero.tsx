@@ -5,6 +5,7 @@ import { site } from "@/data/site";
 import { home, contact } from "@/site.config";
 import { CountUp } from "@/components/Motion";
 import { optional } from "@/lib/optional";
+import HeroAlign from "./HeroAlign";
 
 // All text and photos come from site.config.ts → home.hero
 const hero = home.hero;
@@ -72,7 +73,7 @@ export default function Hero() {
           <dl className="absolute inset-x-0 bottom-0 grid grid-cols-3 items-end gap-4 px-6 pb-[clamp(24px,4vh,44px)] text-white sm:px-10 lg:pl-[150px] lg:pr-12">
             {site.heroStats.map((s) => (
               <div key={s.label} className="flex flex-col-reverse">
-                <dt className="t-label mt-3 !text-[11px] text-white/75 lg:!text-[12px]">{s.label}</dt>
+                <dt className="t-label mt-3 min-h-[2.8em] !text-[11px] text-white/75 lg:!text-[12px]">{s.label}</dt>
                 <dd className="t-num text-[34px] lg:text-[clamp(36px,3.4vw,60px)]"><CountUp value={s.value} /></dd>
               </div>
             ))}
@@ -80,6 +81,7 @@ export default function Hero() {
         </div>
 
         <Badge />
+        <HeroAlign />
       </div>
     </section>
   );

@@ -13,7 +13,7 @@ export default function Faq() {
       <div data-reveal><SectionLabel>{home.faq.label}</SectionLabel></div>
       <div data-reveal style={{ "--d": 1 } as React.CSSProperties} className="mt-5 flex flex-col justify-between gap-5 md:flex-row md:items-start">
         <h2 className="h-section"><Lines text={home.faq.title} /></h2>
-        <p className="max-w-[320px] text-[15px] leading-[1.6] text-mute md:mt-2">{home.faq.text}</p>
+        <p className="t-body max-w-[360px] md:mt-2">{home.faq.text}</p>
       </div>
 
       <ul className="mt-10 lg:mt-12">
@@ -27,12 +27,12 @@ export default function Faq() {
                 aria-controls={`faq-${i}`}
                 onClick={() => setOpen(isOpen ? -1 : i)}
               >
-                <span className="text-[18px] tracking-[-0.01em] sm:text-[22px]">{f.q}</span>
+                <span className="font-display text-[18px] font-medium tracking-[-0.015em] sm:text-[clamp(20px,1.5vw,26px)]">{f.q}</span>
                 <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full transition-colors ${isOpen ? "bg-night text-white" : "border border-night/50 text-night"}`}>
                   {isOpen ? <Arrow /> : <Arrow dir="e" />}
                 </span>
               </button>
-              <div id={`faq-${i}`} hidden={!isOpen} className="-mt-3 max-w-[760px] pb-6 text-[15px] leading-[1.6] text-mute">
+              <div id={`faq-${i}`} hidden={!isOpen} className="t-body -mt-3 max-w-[760px] pb-7">
                 {f.a}
               </div>
             </li>

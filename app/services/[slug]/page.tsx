@@ -52,16 +52,16 @@ export default async function ServicePage({ params }: Params) {
             <ol className="mt-8 grid gap-5 sm:grid-cols-2">
               {process.map((p, i) => (
                 <li key={p.title} className="border-t border-night pt-5">
-                  <p className="text-[13px] text-mute">{L.step} {i + 1}</p>
-                  <h3 className="mt-1 text-[20px]">{p.title}</h3>
-                  <p className="mt-2 text-[15px] leading-[1.6] text-mute">{p.text}</p>
+                  <p className="t-label text-mute">{L.step} {i + 1}</p>
+                  <h3 className="t-title mt-1">{p.title}</h3>
+                  <p className="mt-2 t-body">{p.text}</p>
                 </li>
               ))}
             </ol>
           </div>
 
           <aside className="h-fit rounded-[var(--radius-panel)] bg-night p-7 text-white lg:sticky lg:top-28">
-            <h2 className="text-[22px]">{L.otherServices}</h2>
+            <h2 className="t-title">{L.otherServices}</h2>
             <ul className="mt-4 divide-y divide-white/10">
               {others.map((o) => (
                 <li key={o.slug}>

@@ -46,9 +46,9 @@ export default async function ProjectPage({ params }: Params) {
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
           <div className="absolute inset-x-0 bottom-0 p-6 text-white sm:p-10">
             <Link href="/projects" className="inline-flex items-center gap-2 text-[14px] text-white/85 hover:text-white"><Arrow dir="w" /> {L.allProjects}</Link>
-            <h1 className="mt-4 max-w-[900px] text-[40px] leading-[1.08] tracking-[-0.025em] sm:text-[60px]">{p.name}</h1>
+            <h1 className="t-display mt-4 max-w-[1000px] !text-[clamp(40px,4.6vw,88px)]">{p.name}</h1>
             <ul className="mt-5 flex flex-wrap gap-2">
-              {[p.category, p.status, p.location].map((t) => <li key={t} className="glass rounded-full px-4 py-1.5 text-[13px]">{t}</li>)}
+              {[p.category, p.status, p.location].map((t) => <li key={t} className="glass rounded-full px-4 py-1.5 font-mono text-[12px] tracking-[0.06em]">{t}</li>)}
             </ul>
           </div>
         </div>
@@ -58,8 +58,8 @@ export default async function ProjectPage({ params }: Params) {
         <div className="grid gap-12 lg:grid-cols-[1fr_400px]">
           <div>
             <SectionLabel>{L.overview}</SectionLabel>
-            <p className="mt-5 text-[24px] leading-[1.4] tracking-[-0.01em] sm:text-[30px]">{p.summary}</p>
-            <h2 className="mt-12 text-[22px]">{L.highlights}</h2>
+            <p className="t-lead mt-5">{p.summary}</p>
+            <h2 className="t-title mt-12 !text-[24px]">{L.highlights}</h2>
             <ul className="mt-5 grid gap-3 sm:grid-cols-2">
               {p.highlights.map((h) => (
                 <li key={h} className="rounded-[16px] bg-white px-5 py-4 text-[15px]">{h}</li>
@@ -68,18 +68,18 @@ export default async function ProjectPage({ params }: Params) {
             {p.story && (
               <div className="mt-12 grid gap-8 sm:grid-cols-2">
                 <div>
-                  <h2 className="text-[22px]">{L.challenge}</h2>
-                  <p className="mt-3 text-[15px] leading-[1.7] text-mute">{p.story.challenge}</p>
+                  <h2 className="t-title">{L.challenge}</h2>
+                  <p className="mt-3 t-body">{p.story.challenge}</p>
                 </div>
                 <div>
-                  <h2 className="text-[22px]">{L.solution}</h2>
-                  <p className="mt-3 text-[15px] leading-[1.7] text-mute">{p.story.solution}</p>
+                  <h2 className="t-title">{L.solution}</h2>
+                  <p className="mt-3 t-body">{p.story.solution}</p>
                 </div>
               </div>
             )}
           </div>
           <aside className="h-fit rounded-[var(--radius-panel)] bg-night p-7 text-white lg:sticky lg:top-28">
-            <h2 className="text-[22px]">{L.projectFacts}</h2>
+            <h2 className="t-title">{L.projectFacts}</h2>
             <dl className="mt-4 divide-y divide-white/10 text-[14px]">
               {facts.map(([k, v]) => (
                 <div key={k} className="flex justify-between gap-4 py-3.5">

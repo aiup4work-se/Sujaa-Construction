@@ -9,8 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@fontsource/outfit": "5.2.5",
-    "@fontsource/roboto": "5.2.5",
+    "@fontsource-variable/archivo": "5.2.5",
+    "@fontsource-variable/manrope": "5.2.5",
+    "@fontsource/ibm-plex-mono": "5.2.5",
     "next": "15.5.26",
     "react": "19.1.0",
     "react-dom": "19.1.0"

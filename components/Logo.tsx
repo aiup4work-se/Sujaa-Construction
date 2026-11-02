@@ -20,7 +20,7 @@ export default function Logo({ light = false }: { light?: boolean }) {
         <circle cx="16" cy="16" r="6" fill="none" stroke={inner} strokeWidth="1.6" />
         <circle cx="16" cy="16" r="2" fill={inner} />
       </svg>
-      <span className={`text-[22px] font-medium tracking-[-0.02em] ${light ? "text-white" : "text-night"}`}>{brand.shortName}</span>
+      <span className={`font-display text-[22px] font-semibold tracking-[-0.03em] [font-stretch:94%] ${light ? "text-white" : "text-night"}`}>{brand.shortName}</span>
     </span>
   );
 }

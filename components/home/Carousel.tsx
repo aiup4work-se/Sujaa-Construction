@@ -22,7 +22,7 @@ export default function Carousel({ label, title, intro, children, itemClass }: {
       <div data-reveal style={{ "--d": 1 } as React.CSSProperties} className="mt-5 flex flex-col justify-between gap-6 md:flex-row md:items-end">
         <div className="max-w-[920px]">
           <h2 className="h-section">{title}</h2>
-          <p className="mt-4 max-w-[560px] text-[15px] leading-[1.65] text-mute">{intro}</p>
+          <p className="t-body mt-5 max-w-[560px]">{intro}</p>
         </div>
         <NavArrows onPrev={() => scroll(-1)} onNext={() => scroll(1)} />
       </div>

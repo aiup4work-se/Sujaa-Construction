@@ -20,9 +20,9 @@ export default function ServicesPage() {
             <article key={s.slug} id={s.slug} className="grid scroll-mt-32 items-center gap-8 lg:grid-cols-2 lg:gap-16">
               <Link href={`/services/${s.slug}`} className={`block ${i % 2 ? "lg:order-2" : ""}`} aria-label={s.title}><Photo src={s.image} alt={s.title} scene={s.scene} className="aspect-[16/11] rounded-[var(--radius-panel)]" /></Link>
               <div>
-                <p className="text-[13px] uppercase text-mute">— {String(i + 1).padStart(2, "0")} —</p>
+                <p className="t-label text-mute">— {String(i + 1).padStart(2, "0")} —</p>
                 <h2 className="h-section mt-4">{s.title}</h2>
-                <p className="mt-4 text-[16px] leading-[1.7] text-mute">{s.summary}</p>
+                <p className="mt-4 t-body">{s.summary}</p>
                 <ul className="mt-7 flex flex-wrap gap-2">
                   {s.details.map((d) => (
                     <li key={d} className="rounded-full border border-night/25 px-4 py-2 text-[14px]">{d}</li>

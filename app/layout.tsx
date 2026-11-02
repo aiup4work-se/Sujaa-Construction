@@ -4,11 +4,9 @@ import Footer from "@/components/Footer";
 import { RevealObserver } from "@/components/Motion";
 import { brand, seo } from "@/site.config";
 // Fonts bundled from npm (no Google Fonts request at build time)
-import "@fontsource/roboto/300.css";
-import "@fontsource/roboto/400.css";
-import "@fontsource/roboto/500.css";
-import "@fontsource/outfit/300.css";
-import "@fontsource/outfit/400.css";
+import "@fontsource-variable/archivo/wdth.css";   // headings (variable weight + width)
+import "@fontsource-variable/manrope/wght.css";   // body text
+import "@fontsource/ibm-plex-mono/500.css";       // small technical labels
 import "./globals.css";
 
 export const metadata: Metadata = {

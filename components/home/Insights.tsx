@@ -14,15 +14,15 @@ export default function Insights() {
       <div data-reveal><SectionLabel>{home.insights.label}</SectionLabel></div>
       <div data-reveal style={{ "--d": 1 } as React.CSSProperties} className="mt-5 flex flex-col justify-between gap-5 md:flex-row md:items-start">
         <h2 className="h-section"><Lines text={home.insights.title} /></h2>
-        <p className="max-w-[370px] text-[15px] leading-[1.6] text-mute md:mt-2">{home.insights.text}</p>
+        <p className="t-body max-w-[400px] md:mt-2">{home.insights.text}</p>
       </div>
 
       <div className="mt-10 grid gap-5 lg:grid-cols-[1.12fr_1fr] lg:gap-6">
         <article data-reveal="scale" className="group relative min-h-[420px] overflow-hidden rounded-[22px] lg:min-h-[444px]">
           <Photo src={lead.image} alt={lead.title} scene="crane" className="absolute inset-0" />
           <div className="glass absolute inset-x-3.5 bottom-3.5 rounded-[16px] bg-white/20 p-5 text-white">
-            <h3 className="text-[20px] leading-snug sm:text-[22px]">{lead.title}</h3>
-            <p className="mt-2 max-w-[520px] text-[14px] leading-[1.5] text-white/85">{lead.excerpt}</p>
+            <h3 className="font-display text-[22px] font-semibold leading-[1.2] tracking-[-0.02em] sm:text-[clamp(22px,1.8vw,30px)]">{lead.title}</h3>
+            <p className="t-small mt-2 max-w-[520px] text-white/85">{lead.excerpt}</p>
             <PillLink href={`/news/${lead.slug}`} className="mt-5">{home.insights.buttonLabel}</PillLink>
           </div>
         </article>
@@ -33,8 +33,8 @@ export default function Insights() {
               <Link href={`/news/${n.slug}`} className="group grid grid-cols-[minmax(0,236px)_1fr] items-center gap-4 sm:gap-5">
                 <Photo src={n.image} alt="" scene={scenes[i + 1]} className="aspect-[236/132] rounded-[14px]" sizes="240px" />
                 <div className="min-w-0">
-                  <h3 className="text-[15px] font-medium leading-snug group-hover:underline sm:text-[16px]">{n.title}</h3>
-                  <p className="mt-1.5 line-clamp-2 text-[13px] leading-[1.5] text-mute">{n.excerpt}</p>
+                  <h3 className="t-title !text-[clamp(16px,1.15vw,20px)] group-hover:underline">{n.title}</h3>
+                  <p className="t-small mt-1.5 line-clamp-2 text-mute">{n.excerpt}</p>
                 </div>
               </Link>
             </li>

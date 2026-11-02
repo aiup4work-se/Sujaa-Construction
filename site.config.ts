@@ -21,7 +21,7 @@ import { pexels } from "./lib/pexels";
 /* ═══════════════════════════ 0. QUICK SETUP ═══════════════════════════════
  * Change these first — they are reused all through this file.             */
 const COMPANY = "Sujaa Constructions";   // full company name
-const SHORT = "SJ Constructions";                    // short name next to the logo
+const SHORT = "SJC";                    // short name next to the logo
 const LEGAL_SUFFIX = "(Pvt) Ltd";
 const DOMAIN = "sujaa-constructions.lk";               // your website domain (no www)
 const FOUNDED = 1958;                      // year founded

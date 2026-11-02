@@ -19,16 +19,16 @@ export default function AboutPage() {
         <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16">
           <div>
             <SectionHead label={L.ourStory} title={a.storyTitle} />
-            <div className="mt-6 space-y-4 text-[16px] leading-[1.7] text-mute">
+            <div className="mt-6 space-y-4 t-body">
               {a.story.map((p) => <p key={p}>{p}</p>)}
             </div>
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               <div className="rounded-[22px] bg-night p-6 text-white">
-                <h3 className="text-[22px]">{L.vision}</h3>
+                <h3 className="t-title">{L.vision}</h3>
                 <p className="mt-2 text-[15px] leading-[1.6] text-white/75">{a.vision}</p>
               </div>
               <div className="rounded-[22px] bg-sun p-6">
-                <h3 className="text-[22px]">{L.mission}</h3>
+                <h3 className="t-title">{L.mission}</h3>
                 <p className="mt-2 text-[15px] leading-[1.6] text-night/75">{a.mission}</p>
               </div>
             </div>
@@ -42,8 +42,8 @@ export default function AboutPage() {
         <ol className="mt-12 grid border-t border-rule sm:grid-cols-2 lg:grid-cols-3">
           {milestones.map((m) => (
             <li key={m.year + m.text} className="border-b border-rule py-7 pr-8">
-              <div className="text-[44px] leading-none tracking-[-0.02em]">{m.year}</div>
-              <p className="mt-3 text-[15px] leading-[1.6] text-mute">{m.text}</p>
+              <div className="t-num text-[clamp(36px,3vw,56px)]">{m.year}</div>
+              <p className="mt-3 t-body">{m.text}</p>
             </li>
           ))}
         </ol>
@@ -57,9 +57,9 @@ export default function AboutPage() {
               <div className="relative aspect-[286/300] overflow-hidden rounded-[22px] bg-sun">
                 <Portrait src={p.photo} alt={p.name} seed={i} className={p.photo ? "absolute inset-0" : "absolute inset-x-0 bottom-0 top-[6%]"} />
               </div>
-              <h3 className="mt-4 text-[18px] uppercase">{p.name}</h3>
-              <p className="text-[14px] text-mute">{p.role}</p>
-              <p className="mt-2 text-[14px] leading-[1.6] text-mute">{p.bio}</p>
+              <h3 className="t-title mt-4">{p.name}</h3>
+              <p className="t-small text-mute">{p.role}</p>
+              <p className="mt-2 t-small text-mute">{p.bio}</p>
             </article>
           ))}
         </div>
@@ -67,12 +67,12 @@ export default function AboutPage() {
 
       <section className="mt-24 edge lg:mt-[120px]">
         <div className="rounded-[var(--radius-panel)] bg-night px-6 py-14 text-white sm:px-12 lg:rounded-[40px] lg:py-20">
-          <p className="text-[13px] uppercase text-white/70">— {L.whatWeStandFor} —</p>
+          <p className="t-label text-white/70">— {L.whatWeStandFor} —</p>
           <h2 className="h-section mt-5">{a.valuesTitle}</h2>
           <div className="mt-10 grid gap-px overflow-hidden rounded-[22px] bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
             {values.map((v) => (
               <div key={v.title} className="bg-night p-7">
-                <h3 className="text-[20px]">{v.title}</h3>
+                <h3 className="t-title">{v.title}</h3>
                 <p className="mt-2 text-[14px] leading-[1.6] text-white/70">{v.text}</p>
               </div>
             ))}

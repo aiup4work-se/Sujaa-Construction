@@ -16,7 +16,7 @@ export default function SustainabilityPage() {
         <dl className="grid grid-cols-2 gap-5 lg:grid-cols-4">
           {s.figures.map((f) => (
             <div key={f.label} className="rounded-[22px] bg-white p-6">
-              <dd className="text-[40px] leading-none tracking-[-0.02em]">{f.value}</dd>
+              <dd className="t-num text-[clamp(36px,3vw,56px)]">{f.value}</dd>
               <dt className="mt-3 text-[14px] text-mute">{f.label}</dt>
             </div>
           ))}
@@ -30,8 +30,8 @@ export default function SustainabilityPage() {
             <ul className="mt-8">
               {s.pillars.map((p) => (
                 <li key={p.title} className="border-b border-rule py-6">
-                  <h3 className="text-[22px]">{p.title}</h3>
-                  <p className="mt-2 text-[15px] leading-[1.6] text-mute">{p.text}</p>
+                  <h3 className="t-title">{p.title}</h3>
+                  <p className="mt-2 t-body">{p.text}</p>
                 </li>
               ))}
             </ul>

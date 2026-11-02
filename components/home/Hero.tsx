@@ -35,7 +35,7 @@ export default function Hero() {
               </span>
             </span>
           </Link>
-          <h1 className="anim-lines mt-8 text-[44px] leading-[1.08] tracking-[-0.03em] text-night md:text-[clamp(44px,min(4.6vw,8vh),84px)]">
+          <h1 className="anim-lines t-display mt-8 text-night md:text-[clamp(48px,min(5vw,9vh),96px)]">
             {hero.title.split("\n").map((line, i) => (
               <span key={i}><span style={{ "--i": i } as React.CSSProperties}>{line}</span></span>
             ))}
@@ -44,15 +44,21 @@ export default function Hero() {
 
         {/* Bottom-left: intro + buttons */}
         <div style={{ "--d": 2 } as React.CSSProperties} className="hero-bl anim-rise flex flex-col justify-center rounded-[var(--radius-panel)] bg-sun px-6 py-8 sm:px-10 md:pr-[150px]">
-          <p className="max-w-[500px] text-[15px] leading-[1.6] text-night/80 md:text-[clamp(14px,1.05vw,17px)]">{hero.text}</p>
+          <p className="max-w-[520px] text-[16px] font-medium leading-[1.6] text-night/75 md:text-[clamp(15px,1.1vw,18px)]">{hero.text}</p>
           <div className="mt-[clamp(16px,2.6vh,28px)] flex flex-wrap gap-3">
             <PillLink href={hero.primaryButton.href}>{hero.primaryButton.label}</PillLink>
             <Link href={contact.videoUrl} target="_blank" rel="noopener noreferrer"
-              className="inline-flex h-12 items-center gap-2.5 rounded-full border border-night/70 px-6 text-[14px] font-medium text-night transition-colors hover:bg-night hover:text-white">
+              className="inline-flex h-12 items-center gap-2.5 rounded-full border border-night/70 px-6 text-[15px] font-semibold text-night transition-colors hover:bg-night hover:text-white">
               <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z" /></svg>
               {hero.videoButtonLabel}
             </Link>
           </div>
+          {hero.contactLine && (
+            <p className="t-label mt-5 flex items-center gap-2 text-night/60">
+              <span className="h-1.5 w-1.5 rounded-full bg-night/60" aria-hidden="true" />
+              {hero.contactLine}
+            </p>
+          )}
         </div>
 
         {/* Right: photo with stats */}
@@ -64,8 +70,8 @@ export default function Hero() {
           <dl className="absolute inset-x-0 bottom-0 grid grid-cols-3 gap-4 px-6 pb-[clamp(24px,4vh,44px)] text-white sm:px-10 md:pl-[150px] md:pr-12">
             {site.heroStats.map((s) => (
               <div key={s.label} className="flex flex-col-reverse">
-                <dt className="mt-2 text-[12px] text-white/80 md:text-[clamp(12px,0.95vw,15px)]">{s.label}</dt>
-                <dd className="text-[30px] leading-none tracking-[-0.02em] md:text-[clamp(32px,3vw,52px)]"><CountUp value={s.value} /></dd>
+                <dt className="t-label mt-3 !text-[11px] text-white/75 md:!text-[12px]">{s.label}</dt>
+                <dd className="t-num text-[34px] md:text-[clamp(36px,3.4vw,60px)]"><CountUp value={s.value} /></dd>
               </div>
             ))}
           </dl>

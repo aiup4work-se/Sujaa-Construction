@@ -50,10 +50,10 @@ export default function Services() {
                   href={`/services/${s.slug}`}
                   onMouseEnter={() => setActive(i)}
                   onFocus={() => setActive(i)}
-                  className={`font-display text-[26px] font-light leading-[1.25] tracking-[-0.01em] transition-colors duration-300 sm:text-[36px] lg:text-[clamp(44px,3.2vw,62px)] ${tone} lg:cursor-none`}
+                  className={`font-display text-[28px] font-[450] leading-[1.2] tracking-[-0.03em] [font-stretch:92%] transition-colors duration-300 sm:text-[40px] lg:text-[clamp(46px,3.6vw,68px)] ${tone} lg:cursor-none`}
                 >
                   {s.short}
-                  <span className="ml-2 align-middle text-[16px] text-white/60 sm:text-[20px]">({String(i + 1).padStart(2, "0")})</span>
+                  <span className="ml-3 align-super font-mono text-[12px] tracking-[0.1em] text-white/50 sm:text-[14px]">({String(i + 1).padStart(2, "0")})</span>
                 </Link>
               </li>
             );

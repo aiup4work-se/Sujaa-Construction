@@ -23,7 +23,7 @@ export default function Testimonials() {
           <div data-reveal style={{ "--d": 1 } as React.CSSProperties} className="mt-5 flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div className="max-w-[760px]">
               <h2 className="h-section"><Lines text={home.testimonials.title} /></h2>
-              <p className="mt-4 text-[15px] leading-[1.65] text-white/75">{home.testimonials.text}</p>
+              <p className="t-body mt-5 !text-white/65">{home.testimonials.text}</p>
             </div>
             <NavArrows dark onPrev={() => go(-1)} onNext={() => go(1)} />
           </div>
@@ -36,15 +36,15 @@ export default function Testimonials() {
                 <Photo key={proj.slug} src={proj.image} alt={proj.name} className="absolute inset-0" sizes="420px" />
               )}
               <div className="glass absolute bottom-5 left-1/2 w-[70%] -translate-x-1/2 rounded-[12px] bg-black/35 py-3 text-center text-white">
-                <p className="text-[20px]">{t.name}</p>
-                <p className="text-[13px] text-white/80">{t.role}</p>
-                {proj && !t.photo && <p className="mt-1 text-[12px] text-white/70">{proj.name}</p>}
+                <p className="font-display text-[20px] font-semibold tracking-[-0.01em]">{t.name}</p>
+                <p className="t-label mt-1 !text-[10.5px] text-white/80">{t.role}</p>
+                {proj && !t.photo && <p className="mt-1 text-[12px] text-white/65">{proj.name}</p>}
               </div>
             </div>
 
             <figure key={i} className="anim-rise relative">
               <QuoteMark className="h-7 w-11 text-white" />
-              <blockquote className="mt-6 text-[26px] leading-[1.5] tracking-[-0.01em] sm:text-[34px] lg:text-[clamp(40px,2.6vw,52px)]">
+              <blockquote className="t-lead mt-7 !leading-[1.35] lg:!text-[clamp(32px,2.6vw,48px)]">
                 {t.quote}
               </blockquote>
               <QuoteMark className="ml-auto mt-4 h-7 w-11 rotate-180 text-white" />

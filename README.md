@@ -26,10 +26,10 @@ You never need to touch the components or pages. Open `site.config.ts` in the pr
 | **3. Contact** | Address, phones, WhatsApp, emails, office hours, map link, company video; social links |
 | **4. Credentials** | CIDA grade/registration, business reg., certifications list |
 | **5. Menus** | Top menu, "Contact Us" button, footer links |
-| **6. Home page** | Every heading, paragraph, button and photo on the home page, the hero stats and badge text |
+| **6. Home page** | Every heading, paragraph, button and photo on the home page: hero, about, **Why Choose Us** (4 headline figures + 6 proof points), **Who We Serve** (moving sector band), and section titles |
 | **7. Shared blocks** | Yellow "Have a project in mind?" band, footer tagline and newsletter text |
 | **8. Inner pages** | Hero title/text/photo for every page, plus About story, careers perks, sustainability/safety figures, equipment fleet, privacy policy |
-| **9. Services** | All services (title, short name, details, photo, which project sectors relate) |
+| **9. Services** | 9 services — Building, Roads, Infrastructure, Piling, Water & Drainage, MEP, Renovation, Plant & Machinery, Design & Build (each gets its own page) |
 | **10. Projects** | Portfolio: details, photo, gallery, challenge/solution, `featured: true` for the home page |
 | **11. People** | Team members and testimonials |
 | **12. Company facts** | Milestones, values, FAQs |
@@ -90,3 +90,11 @@ lib/pexels.ts       stock photo URL helper
 ## Deploy
 
 Vercel is easiest (connect the Git repo). Any Node host works.
+
+## Before going live — replace the samples
+
+These are marked with ⚠️ in `site.config.ts` and must be your real information:
+- `home.whyUs.stats` and `home.whyUs.points` figures (years, projects, clients, workforce, safe man-hours, on-time %, repeat clients, engineers)
+- `projects` — the sample projects
+- `team`, `testimonials`, `news`, `milestones`
+- CIDA grade/registration and certificates in `credentials` / `certifications`

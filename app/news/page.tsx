@@ -19,11 +19,11 @@ export default function NewsPage() {
           {items.map((n, i) => (
             <Link key={n.slug} href={`/news/${n.slug}`} className="group block">
               <Photo src={n.image} alt="" scene={scenes[i % scenes.length]} className="aspect-[16/10] rounded-[22px]" />
-              <p className="mt-5 text-[13px] uppercase text-mute">
+              <p className="mt-5 t-label text-mute">
                 {n.tag} · {new Date(n.date).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}
               </p>
-              <h2 className="mt-2 text-[24px] leading-[1.25] tracking-[-0.01em] group-hover:underline">{n.title}</h2>
-              <p className="mt-2 text-[15px] leading-[1.6] text-mute">{n.excerpt}</p>
+              <h2 className="t-title mt-2 !text-[clamp(22px,1.7vw,28px)] group-hover:underline">{n.title}</h2>
+              <p className="mt-2 t-body">{n.excerpt}</p>
             </Link>
           ))}
         </div>

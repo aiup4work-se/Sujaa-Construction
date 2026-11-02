@@ -12,7 +12,7 @@ export function Arrow({ className = "h-4 w-4", dir = "ne" }: { className?: strin
 /** Black pill with yellow arrow disc — primary CTA in the design. */
 export function PillLink({ href, children, className = "" }: { href: string; children: React.ReactNode; className?: string }) {
   return (
-    <Link href={href} className={`group inline-flex h-12 items-center gap-4 rounded-full bg-night pl-6 pr-1.5 text-[14px] font-medium text-white transition-colors hover:bg-night-2 ${className}`}>
+    <Link href={href} className={`group inline-flex h-12 items-center gap-4 rounded-full bg-night pl-6 pr-1.5 text-[15px] font-semibold tracking-[-0.005em] text-white transition-colors hover:bg-night-2 ${className}`}>
       {children}
       <span className="flex h-9 w-9 items-center justify-center rounded-full bg-sun text-night transition-transform duration-300 group-hover:rotate-45">
         <Arrow />
@@ -23,7 +23,7 @@ export function PillLink({ href, children, className = "" }: { href: string; chi
 
 export function OutlinePill({ href, children, icon }: { href: string; children: React.ReactNode; icon?: React.ReactNode }) {
   return (
-    <Link href={href} className="inline-flex h-12 items-center gap-2.5 rounded-full border border-night/80 px-6 text-[14px] font-medium text-night transition-colors hover:bg-night hover:text-white">
+    <Link href={href} className="inline-flex h-12 items-center gap-2.5 rounded-full border border-night/80 px-6 text-[15px] font-semibold tracking-[-0.005em] text-night transition-colors hover:bg-night hover:text-white">
       {icon}
       {children}
     </Link>
@@ -45,7 +45,7 @@ export function NavArrows({ onPrev, onNext, dark = false }: { onPrev: () => void
 }
 
 export function SectionLabel({ children, light = false }: { children: React.ReactNode; light?: boolean }) {
-  return <p className={`text-[13px] uppercase ${light ? "text-white/70" : "text-mute"}`}>— {children} —</p>;
+  return <p className={`t-label ${light ? "text-white/60" : "text-mute"}`}>— {children} —</p>;
 }
 
 export function QuoteMark({ className = "" }: { className?: string }) {

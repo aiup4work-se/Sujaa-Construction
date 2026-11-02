@@ -18,16 +18,16 @@ export default function Footer() {
       <div className="shell pb-8 pt-12 lg:pt-14">
         <div className="flex flex-col justify-between gap-6 md:flex-row">
           <Logo light />
-          <p className="max-w-[340px] text-[15px] leading-relaxed text-white/70">{footer.intro}</p>
+          <p className="t-body max-w-[360px] !text-white/60">{footer.intro}</p>
         </div>
 
         <div data-reveal className="mt-10 flex flex-col justify-between gap-10 lg:flex-row lg:items-end">
-          <p className="max-w-[640px] text-[40px] leading-[1.12] tracking-[-0.02em] sm:text-[52px] lg:text-[60px]">{footer.tagline}</p>
+          <p className="t-display max-w-[900px] !text-[clamp(40px,4.6vw,88px)]">{footer.tagline}</p>
           <Newsletter />
         </div>
 
         <div className="mt-12 flex flex-col gap-6 border-t border-white/15 pt-8 md:flex-row md:items-center md:justify-between">
-          <nav className="flex flex-wrap gap-x-8 gap-y-3 text-[15px]" aria-label="Footer">
+          <nav className="flex flex-wrap gap-x-8 gap-y-3 text-[15px] font-medium" aria-label="Footer">
             {site.footerNav.map((n) => <Link key={n.href} href={n.href} className="text-white/90 hover:text-sun">{n.label}</Link>)}
           </nav>
           <div className="flex gap-3">
@@ -40,7 +40,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <p className="mt-10 text-center text-[13px] text-white/55">© {new Date().getFullYear()} {site.legalName} — {L.allRightsReserved}{L.copyrightExtra ? ` · ${L.copyrightExtra}` : ""}</p>
+        <p className="mt-10 text-center font-mono text-[11.5px] tracking-[0.04em] text-white/45">© {new Date().getFullYear()} {site.legalName} — {L.allRightsReserved}{L.copyrightExtra ? ` · ${L.copyrightExtra}` : ""}</p>
       </div>
     </footer>
   );

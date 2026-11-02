@@ -19,8 +19,8 @@ export default function Team() {
           <div className="relative aspect-[286/300] overflow-hidden rounded-[22px] bg-sun">
             <Portrait src={p.photo} alt={p.name} seed={i} className={`transition-transform duration-700 group-hover:scale-[1.05] ${p.photo ? "absolute inset-0" : "absolute inset-x-0 bottom-0 top-[6%]"}`} />
             <div className="glass absolute inset-x-3.5 bottom-3.5 rounded-[12px] bg-black/15 px-4 py-2.5 text-white">
-              <p className="text-[14px] uppercase tracking-[0.01em]">{p.name}</p>
-              <p className="text-[12px] text-white/80">{p.role}</p>
+              <p className="font-display text-[16px] font-semibold tracking-[-0.01em]">{p.name}</p>
+              <p className="t-label !text-[10.5px] mt-0.5 text-white/80">{p.role}</p>
             </div>
           </div>
           {/* corner notch */}

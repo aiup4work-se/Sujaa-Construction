@@ -17,7 +17,7 @@ export default function SafetyPage() {
         <dl className="grid grid-cols-2 gap-5 lg:grid-cols-4">
           {s.figures.map((f) => (
             <div key={f.label} className="rounded-[22px] bg-white p-6">
-              <dd className="text-[40px] leading-none tracking-[-0.02em]">{f.value}</dd>
+              <dd className="t-num text-[clamp(36px,3vw,56px)]">{f.value}</dd>
               <dt className="mt-3 text-[14px] leading-snug text-mute">{f.label}</dt>
             </div>
           ))}
@@ -29,8 +29,8 @@ export default function SafetyPage() {
         <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {s.practices.map((p) => (
             <div key={p.title} className="rounded-[22px] border border-rule p-7">
-              <h3 className="text-[20px]">{p.title}</h3>
-              <p className="mt-2 text-[15px] leading-[1.6] text-mute">{p.text}</p>
+              <h3 className="t-title">{p.title}</h3>
+              <p className="mt-2 t-body">{p.text}</p>
             </div>
           ))}
         </div>
@@ -39,12 +39,12 @@ export default function SafetyPage() {
       <section className="mt-24 edge">
         <div className="grid items-center gap-10 overflow-hidden rounded-[var(--radius-panel)] bg-night p-6 text-white sm:p-12 lg:grid-cols-2 lg:rounded-[40px]">
           <div>
-            <p className="text-[13px] uppercase text-white/70">— {L.certifications} —</p>
+            <p className="t-label text-white/70">— {L.certifications} —</p>
             <h2 className="h-section mt-5">{L.independentlyCertified}</h2>
             <ul className="mt-8 divide-y divide-white/10">
               {certifications.map((c) => (
                 <li key={c.title} className="flex justify-between gap-6 py-4">
-                  <span className="text-[18px] text-sun">{c.title}</span>
+                  <span className="font-display text-[20px] font-semibold text-sun">{c.title}</span>
                   <span className="text-right text-[14px] text-white/70">{c.text}</span>
                 </li>
               ))}

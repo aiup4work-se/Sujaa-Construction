@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+/* Design tokens — taken from the supplied design */
+@theme {
+  --color-cream: #f6f7f0;      /* page background */
+  --color-sun: #efc447;        /* primary yellow */
+  --color-sun-deep: #e2b130;
+  --color-night: #111111;      /* dark bands, buttons */
+  --color-night-2: #1c1c1c;
+  --color-ink: #111111;        /* body text */
+  --color-mute: #6b6b66;       /* secondary text */
+  --color-rule: #d9dad2;       /* dividers */
+
+  --font-sans: "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Outfit", "Roboto", system-ui, sans-serif;
+
+  --radius-panel: 28px;
+  --radius-card: 20px;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { background: var(--color-cream); color: var(--color-ink); -webkit-font-smoothing: antialiased; }
+  h1, h2, h3 { text-wrap: balance; font-weight: 400; letter-spacing: -0.015em; }
+  :focus-visible { outline: 2px solid var(--color-sun-deep); outline-offset: 3px; border-radius: 6px; }
+  ::selection { background: var(--color-sun); color: var(--color-night); }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+}
+
+/* Layout */
+@utility shell { @apply mx-auto w-full max-w-[1880px] px-5 sm:px-9 lg:px-[60px]; }
+@utility label { @apply text-[13px] uppercase tracking-[0.02em] text-mute; }
+
+/* Headings: scaled from the 1280px design */
+@utility h-section { @apply text-[32px] leading-[1.15] sm:text-[40px] lg:text-[clamp(44px,3.1vw,60px)]; }
+
+/* Glass label used on photos */
+@utility glass { @apply border border-white/25 bg-white/15 backdrop-blur-md; }
+
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+.spin-slow { animation: spin-slow 22s linear infinite; }
+
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* ───────── Home hero: 2×2 grid + round cut-out for the badge ─────────
+ * --g  gap between panels
+ * --bh height of the bottom-left panel
+ * --r  radius of the cut-out (badge radius + breathing room)
+ * --b  badge diameter                                                  */
+.hero-grid { display: grid; gap: 12px; }
+@media (min-width: 768px) {
+  .hero-grid {
+    --g: 20px;
+    --bh: clamp(210px, 29%, 300px);
+    --r: clamp(84px, 7.4vw, 112px);
+    --b: calc(var(--r) * 2 - 28px);
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr var(--bh);
+    gap: var(--g);
+    height: clamp(620px, calc(100svh - 40px), 1080px);
+  }
+  .hero-tl, .hero-bl, .hero-r {
+    --cut: radial-gradient(circle var(--r) at var(--cx) var(--cy), #0000 calc(var(--r) - 0.5px), #000 calc(var(--r) + 0.5px));
+    -webkit-mask-image: var(--cut);
+    mask-image: var(--cut);
+  }
+  .hero-tl { grid-area: 1 / 1; --cx: calc(100% + var(--g) / 2); --cy: calc(100% + var(--g) / 2); }
+  .hero-bl { grid-area: 2 / 1; --cx: calc(100% + var(--g) / 2); --cy: calc(var(--g) / -2); }
+  .hero-r  { grid-area: 1 / 2 / 3 / 3; --cx: calc(var(--g) / -2); --cy: calc(100% - var(--bh) - var(--g) / 2); }
+  .hero-badge {
+    width: var(--b); height: var(--b);
+    left: calc(50% - var(--b) / 2);
+    top: calc(100% - var(--bh) - var(--g) / 2 - var(--b) / 2);
+  }
+}

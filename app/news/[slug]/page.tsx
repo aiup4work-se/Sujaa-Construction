@@ -1,0 +1,65 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import Photo from "@/components/Photo";
+import { Arrow, SectionLabel } from "@/components/Buttons";
+import { news } from "@/data/content";
+import { labels as L } from "@/site.config";
+
+type Params = { params: Promise<{ slug: string }> };
+
+const fmt = (d: string) => new Date(d).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+
+export function generateStaticParams() {
+  return news.map((n) => ({ slug: n.slug }));
+}
+
+export async function generateMetadata({ params }: Params): Promise<Metadata> {
+  const { slug } = await params;
+  const n = news.find((x) => x.slug === slug);
+  return n ? { title: n.title, description: n.excerpt } : {};
+}
+
+export default async function ArticlePage({ params }: Params) {
+  const { slug } = await params;
+  const n = news.find((x) => x.slug === slug);
+  if (!n) notFound();
+  const more = news.filter((x) => x.slug !== n.slug).slice(0, 3);
+
+  return (
+    <>
+      <section className="mx-auto  px-3 pt-3 sm:px-5 sm:pt-5">
+        <div className="rounded-[var(--radius-panel)] bg-sun px-6 pb-12 pt-[120px] sm:px-12 md:pt-[150px]">
+          <div className="mx-auto max-w-[820px]">
+            <Link href="/news" className="inline-flex items-center gap-2 text-[14px] text-night/70 hover:text-night"><Arrow dir="w" /> {L.allNews}</Link>
+            <p className="mt-6 text-[13px] uppercase text-night/70">{n.tag} · {fmt(n.date)}</p>
+            <h1 className="mt-3 text-[36px] leading-[1.12] tracking-[-0.025em] sm:text-[52px]">{n.title}</h1>
+            <p className="mt-5 text-[18px] leading-[1.6] text-night/75">{n.excerpt}</p>
+          </div>
+        </div>
+      </section>
+
+      <article className="shell pt-12">
+        <Photo src={n.image} alt={n.title} className="mx-auto aspect-[16/8] max-w-[1080px] rounded-[var(--radius-panel)]" priority sizes="(max-width:1100px) 100vw, 1080px" />
+        <div className="mx-auto mt-12 max-w-[720px] space-y-6 text-[18px] leading-[1.75] text-night/85">
+          {(n.body ?? [n.excerpt]).map((para) => <p key={para}>{para}</p>)}
+        </div>
+      </article>
+
+      {more.length > 0 && (
+        <section className="shell pt-24">
+          <SectionLabel>{L.moreStories}</SectionLabel>
+          <div className="mt-8 grid gap-6 md:grid-cols-3">
+            {more.map((m) => (
+              <Link key={m.slug} href={`/news/${m.slug}`} className="group">
+                <Photo src={m.image} alt="" className="aspect-[16/10] rounded-[20px]" sizes="33vw" />
+                <p className="mt-4 text-[13px] uppercase text-mute">{m.tag} · {fmt(m.date)}</p>
+                <h3 className="mt-1.5 text-[19px] leading-snug group-hover:underline">{m.title}</h3>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
+    </>
+  );
+}

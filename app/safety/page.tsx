@@ -4,8 +4,9 @@ import { CtaBand, PageHero, SectionHead } from "@/components/ui";
 import { certifications } from "@/data/content";
 import { pages } from "@/site.config";
 import { labels as L } from "@/site.config";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Health, Safety & Quality" };
+export const metadata: Metadata = pageMeta({ title: "Health, Safety & Quality", description: pages.safety.hero.text, path: "/safety" });
 const s = pages.safety;
 
 export default function SafetyPage() {

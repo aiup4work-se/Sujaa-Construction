@@ -6,8 +6,9 @@ import { leadership, milestones, values } from "@/data/site";
 import { certifications } from "@/data/content";
 import { pages } from "@/site.config";
 import { labels as L } from "@/site.config";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "About Us" };
+export const metadata: Metadata = pageMeta({ title: "About Us", description: pages.about.hero.text, path: "/about" });
 const a = pages.about;
 
 export default function AboutPage() {

@@ -5,6 +5,7 @@ import type { Project } from "@/data/projects";
 import { sceneFor } from "@/data/projects";
 import { cta, contact } from "@/site.config";
 import Lines from "./Lines";
+import { optional } from "@/lib/optional";
 
 /** Inner-page hero: yellow panel + photo panel, echoing the home hero. */
 export function PageHero({ label, title, text, scene = "site", image, photo }: { label: string; title: string; text?: string; scene?: Scene; image?: string; photo?: string }) {
@@ -27,9 +28,9 @@ export function SectionHead({ label, title, text }: { label: string; title: Reac
   return (
     <div data-reveal>
       <SectionLabel>{label}</SectionLabel>
-      <div className="mt-5 flex flex-col justify-between gap-5 md:flex-row md:items-start">
+      <div className="mt-5 flex flex-col justify-between gap-5 lg:flex-row lg:items-start">
         <h2 className="h-section max-w-[640px]">{typeof title === "string" ? <Lines text={title} /> : title}</h2>
-        {text && <p className="t-body max-w-[400px] md:mt-2">{text}</p>}
+        {text && <p className="t-body max-w-[400px] lg:mt-2">{text}</p>}
       </div>
     </div>
   );
@@ -62,14 +63,14 @@ export function CtaBand() {
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 opacity-[0.06] [background-image:linear-gradient(var(--color-night)_1px,transparent_1px),linear-gradient(90deg,var(--color-night)_1px,transparent_1px)] [background-size:56px_56px] [mask-image:linear-gradient(90deg,transparent,black_70%)]" />
         <div className="relative grid items-end gap-10 lg:grid-cols-[1.4fr_1fr]">
           <div>
-            <p className="t-label text-night/60">— {cta.eyebrow} —</p>
+            <p className="t-label text-night/60">— {optional(cta, "eyebrow", "Start your project")} —</p>
             <h2 className="t-display mt-5 !text-[clamp(40px,4.6vw,84px)]"><Lines text={cta.title} /></h2>
             <p className="mt-6 max-w-[560px] text-[clamp(16px,1.15vw,19px)] font-medium leading-[1.6] text-night/70">{cta.text}</p>
           </div>
           <div className="flex flex-col gap-6 lg:items-end">
             <PillLink href={cta.button.href} className="h-14 pl-7 text-[16px]">{cta.button.label}</PillLink>
             <div className="lg:text-right">
-              <p className="t-label text-night/55">{cta.phoneLabel}</p>
+              <p className="t-label text-night/55">{optional(cta, "phoneLabel", "Or call us directly")}</p>
               <a href={`tel:${contact.phone.replace(/\s/g, "")}`} className="t-num mt-2 block text-[clamp(26px,2.2vw,38px)] text-night underline-offset-[6px] hover:underline">{contact.phone}</a>
               <p className="t-small mt-1 text-night/60">{contact.hours}</p>
             </div>

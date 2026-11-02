@@ -74,7 +74,10 @@ If any photo is missing or fails to load, a drawn illustration is shown instead,
 
 ## Pages
 
-`/` · `/about` · `/services` + `/services/[slug]` · `/projects` + `/projects/[slug]` · `/sustainability` · `/safety` · `/equipment` · `/news` + `/news/[slug]` · `/careers` · `/contact` · `/privacy`
+`/` · `/about` · `/services` + `/services/[slug]` · `/projects` + `/projects/[slug]` · `/sustainability` · `/safety` · `/equipment` · `/news` + `/news/[slug]` · `/careers` · `/contact` · `/suppliers` · `/privacy` · `/terms` · `/cookies`
+
+Legal and supplier page text lives in `site.config.ts` → `pages.terms`, `pages.cookies`, `pages.suppliers`, `pages.privacy`.
+⚠️ The legal wording is a template — have it reviewed by your legal adviser before launch.
 
 ## Project structure
 
@@ -98,3 +101,22 @@ These are marked with ⚠️ in `site.config.ts` and must be your real informati
 - `projects` — the sample projects
 - `team`, `testimonials`, `news`, `milestones`
 - CIDA grade/registration and certificates in `credentials` / `certifications`
+
+## SEO, icons & share images (automatic)
+
+Everything below is generated from `site.config.ts` — no image editing needed:
+
+| What | Where |
+|---|---|
+| Page titles, descriptions, canonical links | every page |
+| Share thumbnails (Facebook, WhatsApp, LinkedIn, X) | `/opengraph-image` + one per page, project, service and article |
+| Favicons & app icons | `/favicon.ico`, `/icon/small`, `/icon/medium`, `/icon/large`, `/apple-icon`, `/maskable-icon` (brand colours) |
+| Install / home-screen info | `/manifest.webmanifest` |
+| Sitemap & robots | `/sitemap.xml`, `/robots.txt` |
+| Structured data for Google | Company (GeneralContractor), Website, FAQ, Service, NewsArticle, Breadcrumbs |
+
+**After launch:**
+1. Set `seo.siteUrl` to your real domain.
+2. Add the site to Google Search Console and Bing Webmaster Tools, paste their codes into `seo.verification`, then submit `https://your-domain/sitemap.xml`.
+3. Create a Google Business Profile with the same name, address and phone as `contact`.
+4. Using your own logo? Replace `app/favicon.ico` and set `brand.logo.src`; the generated icons use your brand colours automatically.

@@ -3,8 +3,9 @@ import { PageHero, SectionHead } from "@/components/ui";
 import { jobs } from "@/data/content";
 import { pages } from "@/site.config";
 import { labels as L } from "@/site.config";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Careers" };
+export const metadata: Metadata = pageMeta({ title: "Careers", description: pages.careers.hero.text, path: "/careers" });
 const c = pages.careers;
 const fmt = (d: string) => new Date(d).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
 

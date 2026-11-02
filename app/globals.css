@@ -22,6 +22,8 @@
 
 @layer base {
   html { scroll-behavior: smooth; }
+  /* Never allow sideways scrolling on any device (clip keeps the sticky header working) */
+  html, body { overflow-x: clip; }
   body {
     background: var(--color-cream); color: var(--color-ink);
     font-size: 16px; line-height: 1.6;
@@ -112,10 +114,13 @@
  * --r  radius of the cut-out (badge radius + breathing room)
  * --b  badge diameter                                                  */
 .hero-grid { display: grid; gap: 12px; }
-@media (min-width: 768px) {
+@media (min-width: 640px) { .hero-grid { gap: 16px; } }
+/* Split layout only where there is room for it (laptops and up) */
+@media (min-width: 1280px) { .hero-grid { --bh: clamp(230px, 29%, 300px) !important; } }
+@media (min-width: 1024px) {
   .hero-grid {
     --g: 20px;
-    --bh: clamp(210px, 29%, 300px);
+    --bh: clamp(260px, 34%, 310px);
     --r: clamp(84px, 7.4vw, 112px);
     --b: calc(var(--r) * 2 - 28px);
     grid-template-columns: 1fr 1fr;
@@ -182,5 +187,7 @@ html.js [data-reveal].is-in { opacity: 1; transform: none; }
 .marquee-track { animation: marquee 48s linear infinite; }
 .marquee:hover .marquee-track { animation-play-state: paused; }
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track { animation: none; flex-wrap: wrap; }
+  .marquee-track { animation: none; flex-wrap: wrap; justify-content: center; width: 100%; }
+  .marquee-track > [aria-hidden="true"] { display: none; }
+  .marquee-track > ul { flex-wrap: wrap; justify-content: center; row-gap: 12px; }
 }

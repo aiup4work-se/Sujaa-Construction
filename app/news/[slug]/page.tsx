@@ -5,6 +5,8 @@ import Photo from "@/components/Photo";
 import { Arrow, SectionLabel } from "@/components/Buttons";
 import { news } from "@/data/content";
 import { labels as L } from "@/site.config";
+import JsonLd from "@/components/JsonLd";
+import { absUrl, breadcrumbLd, pageMeta, siteUrl } from "@/lib/seo";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -17,7 +19,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { slug } = await params;
   const n = news.find((x) => x.slug === slug);
-  return n ? { title: n.title, description: n.excerpt } : {};
+  return n ? pageMeta({ title: n.title, description: n.excerpt, path: `/news/${n.slug}`, type: "article", publishedTime: n.date }) : {};
 }
 
 export default async function ArticlePage({ params }: Params) {
@@ -28,6 +30,20 @@ export default async function ArticlePage({ params }: Params) {
 
   return (
     <>
+      <JsonLd data={[
+        breadcrumbLd([{ name: "News", path: "/news" }, { name: n.title, path: `/news/${n.slug}` }]),
+        {
+          "@context": "https://schema.org",
+          "@type": "NewsArticle",
+          headline: n.title,
+          description: n.excerpt,
+          datePublished: n.date,
+          image: [absUrl(`/news/${n.slug}/opengraph-image`)],
+          mainEntityOfPage: absUrl(`/news/${n.slug}`),
+          author: { "@id": `${siteUrl}/#organization` },
+          publisher: { "@id": `${siteUrl}/#organization` },
+        },
+      ]} />
       <section className="edge pt-3 sm:pt-5">
         <div className="rounded-[var(--radius-panel)] bg-sun px-6 pb-12 pt-[120px] sm:px-12 md:pt-[150px]">
           <div className="mx-auto max-w-[820px]">

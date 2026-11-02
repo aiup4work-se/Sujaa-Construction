@@ -12,9 +12,9 @@ export default function Insights() {
   return (
     <section className="shell pt-24 lg:pt-[120px]">
       <div data-reveal><SectionLabel>{home.insights.label}</SectionLabel></div>
-      <div data-reveal style={{ "--d": 1 } as React.CSSProperties} className="mt-5 flex flex-col justify-between gap-5 md:flex-row md:items-start">
+      <div data-reveal style={{ "--d": 1 } as React.CSSProperties} className="mt-5 flex flex-col justify-between gap-5 lg:flex-row lg:items-start">
         <h2 className="h-section"><Lines text={home.insights.title} /></h2>
-        <p className="t-body max-w-[400px] md:mt-2">{home.insights.text}</p>
+        <p className="t-body max-w-[400px] lg:mt-2">{home.insights.text}</p>
       </div>
 
       <div className="mt-10 grid gap-5 lg:grid-cols-[1.12fr_1fr] lg:gap-6">

@@ -1,9 +1,11 @@
 import { SectionLabel } from "@/components/Buttons";
 import { home } from "@/site.config";
+import { optional } from "@/lib/optional";
 
 /** Slow, endless band of the sectors we serve. Pauses on hover; static for reduced-motion users. */
 export default function Sectors() {
-  const s = home.sectors;
+  const s = optional<{ label: string; items: string[] } | null>(home, "sectors", null);
+  if (!s || !s.items.length) return null; // add `sectors` to home in site.config.ts to show this band
   const row = (hidden: boolean) => (
     <ul className="flex shrink-0 items-center" aria-hidden={hidden || undefined}>
       {s.items.map((name) => (

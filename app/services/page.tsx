@@ -6,8 +6,9 @@ import { CtaBand, PageHero } from "@/components/ui";
 import { services } from "@/data/services";
 import { pages } from "@/site.config";
 import { labels as L } from "@/site.config";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Our Services" };
+export const metadata: Metadata = pageMeta({ title: "Construction Services", description: pages.services.hero.text, path: "/services" });
 
 export default function ServicesPage() {
   return (

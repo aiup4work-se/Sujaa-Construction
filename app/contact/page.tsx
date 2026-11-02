@@ -3,8 +3,9 @@ import ContactForm from "@/components/ContactForm";
 import { PageHero } from "@/components/ui";
 import { contact, pages } from "@/site.config";
 import { labels as L } from "@/site.config";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Contact Us" };
+export const metadata: Metadata = pageMeta({ title: "Contact Us", description: pages.contact.hero.text, path: "/contact" });
 const p = pages.contact;
 
 export default function ContactPage() {

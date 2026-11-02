@@ -3,8 +3,9 @@ import Photo from "@/components/Photo";
 import { CtaBand, PageHero, SectionHead } from "@/components/ui";
 import { pages } from "@/site.config";
 import { labels as L } from "@/site.config";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Sustainability" };
+export const metadata: Metadata = pageMeta({ title: "Sustainability", description: pages.sustainability.hero.text, path: "/sustainability" });
 const s = pages.sustainability;
 
 export default function SustainabilityPage() {

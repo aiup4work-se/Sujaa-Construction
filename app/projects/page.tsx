@@ -3,8 +3,9 @@ import ProjectGrid from "@/components/ProjectGrid";
 import { CtaBand, PageHero } from "@/components/ui";
 import { projects } from "@/data/projects";
 import { pages } from "@/site.config";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Projects" };
+export const metadata: Metadata = pageMeta({ title: "Projects", description: pages.projects.hero.text, path: "/projects" });
 
 export default function ProjectsPage() {
   return (

@@ -7,6 +7,8 @@ import { CtaBand, PageHero, ProjectCard } from "@/components/ui";
 import { services } from "@/data/services";
 import { projects } from "@/data/projects";
 import { pages } from "@/site.config";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbLd, pageMeta, siteUrl, absUrl } from "@/lib/seo";
 import { labels as L } from "@/site.config";
 
 type Params = { params: Promise<{ slug: string }> };
@@ -20,7 +22,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { slug } = await params;
   const s = services.find((x) => x.slug === slug);
-  return s ? { title: s.title, description: s.summary } : {};
+  return s ? pageMeta({ title: `${s.title} Services`, description: s.summary, path: `/services/${s.slug}` }) : {};
 }
 
 export default async function ServicePage({ params }: Params) {
@@ -33,6 +35,19 @@ export default async function ServicePage({ params }: Params) {
 
   return (
     <>
+      <JsonLd data={[
+        breadcrumbLd([{ name: "Services", path: "/services" }, { name: s.title, path: `/services/${s.slug}` }]),
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          name: s.title,
+          serviceType: s.title,
+          description: s.summary,
+          url: absUrl(`/services/${s.slug}`),
+          provider: { "@id": `${siteUrl}/#organization` },
+          areaServed: { "@type": "Country", name: "Sri Lanka" },
+        },
+      ]} />
       <PageHero label={pages.services.hero.label} title={s.title} text={s.summary} image={s.image} scene={s.scene} />
 
       <section className="shell pt-20">

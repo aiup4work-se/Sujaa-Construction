@@ -4,8 +4,9 @@ import Photo, { type Scene } from "@/components/Photo";
 import { PageHero } from "@/components/ui";
 import { news } from "@/data/content";
 import { pages } from "@/site.config";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Insights & News" };
+export const metadata: Metadata = pageMeta({ title: "Insights & News", description: pages.news.hero.text, path: "/news" });
 
 const scenes: Scene[] = ["crane", "site", "workers", "city", "tower"];
 

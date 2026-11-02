@@ -2,7 +2,15 @@ import Link from "next/link";
 import { site } from "@/data/site";
 import Logo from "./Logo";
 import Newsletter from "./Newsletter";
-import { footer } from "@/site.config";
+import { footer, nav } from "@/site.config";
+import { optional } from "@/lib/optional";
+
+const legalLinks = optional(nav, "legal", [
+  { label: "Privacy", href: "/privacy" },
+  { label: "Terms of Use", href: "/terms" },
+  { label: "Cookies", href: "/cookies" },
+  { label: "Suppliers", href: "/suppliers" },
+]);
 import { labels as L } from "@/site.config";
 
 const icons: Record<string, React.ReactNode> = {
@@ -40,7 +48,14 @@ export default function Footer() {
           </div>
         </div>
 
-        <p className="mt-10 text-center font-mono text-[11.5px] tracking-[0.04em] text-white/45">© {new Date().getFullYear()} {site.legalName} — {L.allRightsReserved}{L.copyrightExtra ? ` · ${L.copyrightExtra}` : ""}</p>
+        <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 text-center md:flex-row md:text-left">
+          <p className="font-mono text-[11.5px] tracking-[0.04em] text-white/45">© {new Date().getFullYear()} {site.legalName} — {L.allRightsReserved}{L.copyrightExtra ? ` · ${L.copyrightExtra}` : ""}</p>
+          <nav aria-label="Legal" className="flex flex-wrap justify-center gap-x-5 gap-y-2">
+            {legalLinks.map((l) => (
+              <Link key={l.href} href={l.href} className="font-mono text-[11.5px] tracking-[0.04em] text-white/55 hover:text-sun">{l.label}</Link>
+            ))}
+          </nav>
+        </div>
       </div>
     </footer>
   );

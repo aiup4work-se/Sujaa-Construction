@@ -2,15 +2,23 @@ import { SectionLabel } from "@/components/Buttons";
 import Lines from "@/components/Lines";
 import { CountUp } from "@/components/Motion";
 import { home } from "@/site.config";
+import { optional } from "@/lib/optional";
+
+type WhyUsConfig = {
+  label: string; title: string; text: string;
+  stats: { value: string; label: string }[];
+  points: { figure: string; title: string; text: string }[];
+};
 
 export default function WhyUs() {
-  const w = home.whyUs;
+  const w = optional<WhyUsConfig | null>(home, "whyUs", null);
+  if (!w) return null; // add `whyUs` to home in site.config.ts to show this section
   return (
     <section className="shell pt-24 lg:pt-[120px]">
       <div data-reveal><SectionLabel>{w.label}</SectionLabel></div>
-      <div data-reveal style={{ "--d": 1 } as React.CSSProperties} className="mt-5 flex flex-col justify-between gap-5 md:flex-row md:items-start">
+      <div data-reveal style={{ "--d": 1 } as React.CSSProperties} className="mt-5 flex flex-col justify-between gap-5 lg:flex-row lg:items-start">
         <h2 className="h-section max-w-[760px]"><Lines text={w.title} /></h2>
-        <p className="t-body max-w-[420px] md:mt-2">{w.text}</p>
+        <p className="t-body max-w-[420px] lg:mt-2">{w.text}</p>
       </div>
 
       {/* Headline figures */}

@@ -11,9 +11,9 @@ export default function Faq() {
   return (
     <section className="shell pt-24 lg:pt-[100px]">
       <div data-reveal><SectionLabel>{home.faq.label}</SectionLabel></div>
-      <div data-reveal style={{ "--d": 1 } as React.CSSProperties} className="mt-5 flex flex-col justify-between gap-5 md:flex-row md:items-start">
+      <div data-reveal style={{ "--d": 1 } as React.CSSProperties} className="mt-5 flex flex-col justify-between gap-5 lg:flex-row lg:items-start">
         <h2 className="h-section"><Lines text={home.faq.title} /></h2>
-        <p className="t-body max-w-[360px] md:mt-2">{home.faq.text}</p>
+        <p className="t-body max-w-[360px] lg:mt-2">{home.faq.text}</p>
       </div>
 
       <ul className="mt-10 lg:mt-12">

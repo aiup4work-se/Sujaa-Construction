@@ -7,6 +7,8 @@ import { Arrow, PillLink, SectionLabel } from "@/components/Buttons";
 import { CtaBand, ProjectCard } from "@/components/ui";
 import { projects, sceneFor } from "@/data/projects";
 import { labels as L } from "@/site.config";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbLd, pageMeta } from "@/lib/seo";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -17,7 +19,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { slug } = await params;
   const p = projects.find((x) => x.slug === slug);
-  return p ? { title: p.name, description: p.summary } : {};
+  return p ? pageMeta({ title: p.name, description: `${p.summary} ${p.category} project in ${p.location}${p.year ? `, ${p.year}` : ""}.`, path: `/projects/${p.slug}` }) : {};
 }
 
 export default async function ProjectPage({ params }: Params) {
@@ -40,6 +42,7 @@ export default async function ProjectPage({ params }: Params) {
 
   return (
     <>
+      <JsonLd data={breadcrumbLd([{ name: "Projects", path: "/projects" }, { name: p.name, path: `/projects/${p.slug}` }])} />
       <section className="edge pt-3 sm:pt-5">
         <div className="relative min-h-[560px] overflow-hidden rounded-[var(--radius-panel)] lg:min-h-[640px]">
           <Photo src={p.image} alt={p.name} scene={scene} priority className="absolute inset-0" />

@@ -4,9 +4,11 @@ import { PillLink } from "@/components/Buttons";
 import { site } from "@/data/site";
 import { home, contact } from "@/site.config";
 import { CountUp } from "@/components/Motion";
+import { optional } from "@/lib/optional";
 
 // All text and photos come from site.config.ts → home.hero
 const hero = home.hero;
+const contactLine = optional(hero, "contactLine", "");
 
 /**
  * Layout (desktop): a 2×2 grid that always fits the screen height.
@@ -24,9 +26,9 @@ export default function Hero() {
     <section className="edge pt-3 sm:pt-5">
       <div className="hero-grid relative">
         {/* Top-left: video thumbnail + headline */}
-        <div style={{ "--d": 0 } as React.CSSProperties} className="hero-tl anim-rise flex flex-col justify-between rounded-[var(--radius-panel)] bg-sun px-6 pb-8 pt-[104px] sm:px-10 md:pb-[clamp(28px,4vh,48px)] md:pt-[clamp(110px,15vh,150px)]">
+        <div style={{ "--d": 0 } as React.CSSProperties} className="hero-tl anim-rise flex flex-col justify-between rounded-[var(--radius-panel)] bg-sun px-6 pb-8 pt-[104px] sm:px-10 lg:pb-[clamp(28px,4vh,48px)] lg:pt-[clamp(110px,15vh,150px)]">
           <Link href={contact.videoUrl} target="_blank" rel="noopener noreferrer"
-            className="group relative block aspect-[2/1] w-full max-w-[400px] self-start overflow-hidden rounded-[18px] md:h-[clamp(96px,19vh,200px)] md:w-auto md:max-w-none"
+            className="group relative block aspect-[2/1] w-full max-w-[400px] self-start overflow-hidden rounded-[18px] lg:h-[clamp(96px,19vh,200px)] lg:w-auto lg:max-w-none"
             aria-label="Watch our company video">
             <Photo src={hero.videoThumb} alt="Engineers reviewing plans on site" scene="workers" className="absolute inset-0" sizes="400px" />
             <span className="absolute inset-0 flex items-center justify-center">
@@ -35,7 +37,7 @@ export default function Hero() {
               </span>
             </span>
           </Link>
-          <h1 className="anim-lines t-display mt-8 text-night md:text-[clamp(48px,min(5vw,9vh),96px)]">
+          <h1 className="anim-lines t-display mt-8 text-night sm:!text-[clamp(56px,8vw,72px)] lg:!text-[clamp(48px,min(5vw,9vh),96px)]">
             {hero.title.split("\n").map((line, i) => (
               <span key={i}><span style={{ "--i": i } as React.CSSProperties}>{line}</span></span>
             ))}
@@ -43,35 +45,35 @@ export default function Hero() {
         </div>
 
         {/* Bottom-left: intro + buttons */}
-        <div style={{ "--d": 2 } as React.CSSProperties} className="hero-bl anim-rise flex flex-col justify-center rounded-[var(--radius-panel)] bg-sun px-6 py-8 sm:px-10 md:pr-[150px]">
-          <p className="max-w-[520px] text-[16px] font-medium leading-[1.6] text-night/75 md:text-[clamp(15px,1.1vw,18px)]">{hero.text}</p>
+        <div style={{ "--d": 2 } as React.CSSProperties} className="hero-bl anim-rise flex flex-col justify-center rounded-[var(--radius-panel)] bg-sun px-6 py-8 sm:px-10 lg:pr-[110px] xl:pr-[150px]">
+          <p className="max-w-[520px] text-[16px] font-medium leading-[1.6] text-night/75 lg:text-[clamp(15px,1.1vw,18px)]">{hero.text}</p>
           <div className="mt-[clamp(16px,2.6vh,28px)] flex flex-wrap gap-3">
             <PillLink href={hero.primaryButton.href}>{hero.primaryButton.label}</PillLink>
             <Link href={contact.videoUrl} target="_blank" rel="noopener noreferrer"
-              className="inline-flex h-12 items-center gap-2.5 rounded-full border border-night/70 px-6 text-[15px] font-semibold text-night transition-colors hover:bg-night hover:text-white">
+              className="inline-flex h-12 items-center gap-2.5 rounded-full border border-night/70 px-6 text-[15px] font-semibold text-night transition-colors hover:bg-night hover:text-white lg:hidden xl:inline-flex">
               <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z" /></svg>
               {hero.videoButtonLabel}
             </Link>
           </div>
-          {hero.contactLine && (
-            <p className="t-label mt-5 flex items-center gap-2 text-night/60">
+          {contactLine && (
+            <p className="t-label mt-5 flex items-center gap-2 text-night/60 lg:hidden min-[1340px]:flex">
               <span className="h-1.5 w-1.5 rounded-full bg-night/60" aria-hidden="true" />
-              {hero.contactLine}
+              {contactLine}
             </p>
           )}
         </div>
 
         {/* Right: photo with stats */}
-        <div style={{ "--d": 1 } as React.CSSProperties} className="hero-r anim-rise relative min-h-[440px] overflow-hidden rounded-[var(--radius-panel)] md:min-h-0">
+        <div style={{ "--d": 1 } as React.CSSProperties} className="hero-r anim-rise relative min-h-[440px] overflow-hidden rounded-[var(--radius-panel)] sm:min-h-[520px] lg:min-h-0">
           <div className="anim-ken absolute inset-0">
             <Photo src={hero.photo} alt="Tower crane on one of our sites" scene="crane" priority className="absolute inset-0" sizes="(max-width:768px) 100vw, 50vw" />
           </div>
           <div className="absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-t from-black/65 via-black/25 to-transparent" />
-          <dl className="absolute inset-x-0 bottom-0 grid grid-cols-3 gap-4 px-6 pb-[clamp(24px,4vh,44px)] text-white sm:px-10 md:pl-[150px] md:pr-12">
+          <dl className="absolute inset-x-0 bottom-0 grid grid-cols-3 items-end gap-4 px-6 pb-[clamp(24px,4vh,44px)] text-white sm:px-10 lg:pl-[150px] lg:pr-12">
             {site.heroStats.map((s) => (
               <div key={s.label} className="flex flex-col-reverse">
-                <dt className="t-label mt-3 !text-[11px] text-white/75 md:!text-[12px]">{s.label}</dt>
-                <dd className="t-num text-[34px] md:text-[clamp(36px,3.4vw,60px)]"><CountUp value={s.value} /></dd>
+                <dt className="t-label mt-3 !text-[11px] text-white/75 lg:!text-[12px]">{s.label}</dt>
+                <dd className="t-num text-[34px] lg:text-[clamp(36px,3.4vw,60px)]"><CountUp value={s.value} /></dd>
               </div>
             ))}
           </dl>
@@ -88,7 +90,7 @@ function Badge() {
   const r = 72;
   const circumference = Math.round(2 * Math.PI * r);
   return (
-    <div className="hero-badge anim-pop pointer-events-none absolute hidden md:block" aria-hidden="true">
+    <div className="hero-badge anim-pop pointer-events-none absolute hidden lg:block" aria-hidden="true">
       <div className="relative h-full w-full rounded-full bg-sun">
         <svg viewBox="0 0 200 200" className="spin-slow absolute inset-0 h-full w-full">
           <defs>
